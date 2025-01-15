@@ -52,9 +52,8 @@ double computeDistance(double s, double v, double a, double t)
   ***************************************************/
 double computeAcceleration(double f, double m)
 {
-
    // It returns acceleration.
-   return f / m
+   return f / m;
 }
 
 /***********************************************
@@ -99,7 +98,6 @@ double computeVelocity(double v, double a, double t)
 double computeVerticalComponent(double a, double y, double total)
 {
    y = cos(a) * total
-
    return y;
 }
 
@@ -122,7 +120,11 @@ double computeVerticalComponent(double a, double y, double total)
  * OUTPUT
  *     x : the vertical component of the total
  ***********************************************/
- // your function goes here
+double computeHorizontalComponent(double a, double total)
+{
+   x = sin(a) * total
+   return x;
+}
 
 /************************************************
  * COMPUTE TOTAL COMPONENT
