@@ -13,7 +13,7 @@
  **************************************************************/
    
 #include <iostream>  // for CIN and COUT
-#include <cmath>     // for power, sin, cos, pi, hypot...
+#include <cmath>     // for sin, cos, pi, and hypot
 using namespace std;
    
 #define WEIGHT   15103.000   // Weight in KG
