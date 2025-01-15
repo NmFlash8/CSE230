@@ -20,7 +20,7 @@ using namespace std;
 #define WEIGHT   15103.000   // Weight in KG
 #define GRAVITY     -1.625   // Vertical acceleration due to gravity, in m/s^2
 #define THRUST   45000.000   // Thrust of main engine, in Newtons (kg m/s^2)
-#define M_PI 3.14159265358979323846
+#define M_PI 3.14159265358979323846 // Had issues importing M_PI from cmath, so we just declared it as a global variable.
 
 /***************************************************
  * COMPUTE DISTANCE
