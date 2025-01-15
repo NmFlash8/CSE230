@@ -57,20 +57,20 @@ double computeAcceleration(double f, double m)
    return f / m
 }
 
-  /***********************************************
-   * COMPUTE VELOCITY
-   * Starting with a given velocity, find the new
-   * velocity once acceleration is applied. This is
-   * called the Kinematics equation. The
-   * equation is:
-   *     v = v + a t
-   * INPUT
-   *     v : velocity, in meters/second
-   *     a : acceleration, in meters/second^2
-   *     t : time, in seconds
-   * OUTPUT
-   *     v : new velocity, in meters/second
-   ***********************************************/
+/***********************************************
+ * COMPUTE VELOCITY
+ * Starting with a given velocity, find the new
+ * velocity once acceleration is applied. This is
+ * called the Kinematics equation. The
+ * equation is:
+ *     v = v + a t
+ * INPUT
+ *     v : velocity, in meters/second
+ *     a : acceleration, in meters/second^2
+ *     t : time, in seconds
+ * OUTPUT
+ *     v : new velocity, in meters/second
+ ***********************************************/
 double computeVelocity(double v, double a, double t) 
 {
    v = v + a * t;
@@ -78,24 +78,24 @@ double computeVelocity(double v, double a, double t)
 }
 
 
-   /***********************************************
-    * COMPUTE VERTICAL COMPONENT
-    * Find the vertical component of a velocity or acceleration.
-    * The equation is:
-    *     cos(a) = y / total
-    * This can be expressed graphically:
-    *      x
-    *    +-----
-    *    |   /
-    *  y |  / total
-    *    |a/
-    *    |/
-    * INPUT
-    *     a : angle, in radians
-    *     total : total velocity or acceleration
-    * OUTPUT
-    *     y : the vertical component of the total
-    ***********************************************/
+/***********************************************
+ * COMPUTE VERTICAL COMPONENT
+ * Find the vertical component of a velocity or acceleration.
+ * The equation is:
+ *     cos(a) = y / total
+ * This can be expressed graphically:
+ *      x
+ *    +-----
+ *    |   /
+ *  y |  / total
+ *    |a/
+ *    |/
+ * INPUT
+ *     a : angle, in radians
+ *     total : total velocity or acceleration
+ * OUTPUT
+ *     y : the vertical component of the total
+ ***********************************************/
 double computeVerticalComponent(double a, double y, double total)
 {
    y = cos(a) * total
@@ -104,73 +104,73 @@ double computeVerticalComponent(double a, double y, double total)
 }
 
 
-    /***********************************************
-     * COMPUTE HORIZONTAL COMPONENT
-     * Find the horizontal component of a velocity or acceleration.
-     * The equation is:
-     *     sin(a) = x / total
-     * This can be expressed graphically:
-     *      x
-     *    +-----
-     *    |   /
-     *  y |  / total
-     *    |a/
-     *    |/
-     * INPUT
-     *     a : angle, in radians
-     *     total : total velocity or acceleration
-     * OUTPUT
-     *     x : the vertical component of the total
-     ***********************************************/
-     // your function goes here
+/***********************************************
+ * COMPUTE HORIZONTAL COMPONENT
+ * Find the horizontal component of a velocity or acceleration.
+ * The equation is:
+ *     sin(a) = x / total
+ * This can be expressed graphically:
+ *      x
+ *    +-----
+ *    |   /
+ *  y |  / total
+ *    |a/
+ *    |/
+ * INPUT
+ *     a : angle, in radians
+ *     total : total velocity or acceleration
+ * OUTPUT
+ *     x : the vertical component of the total
+ ***********************************************/
+ // your function goes here
 
-     /************************************************
-      * COMPUTE TOTAL COMPONENT
-      * Given the horizontal and vertical components of
-      * something (velocity or acceleration), determine
-      * the total component. To do this, use the Pythagorean Theorem:
-      *    x^2 + y^2 = t^2
-      * where:
-      *      x
-      *    +-----
-      *    |   /
-      *  y |  / total
-      *    | /
-      *    |/
-      * INPUT
-      *    x : horizontal component
-      *    y : vertical component
-      * OUTPUT
-      *    total : total component
-      ***********************************************/
-      // your function goes here
+/************************************************
+ * COMPUTE TOTAL COMPONENT
+ * Given the horizontal and vertical components of
+ * something (velocity or acceleration), determine
+ * the total component. To do this, use the Pythagorean Theorem:
+ *    x^2 + y^2 = t^2
+ * where:
+ *      x
+ *    +-----
+ *    |   /
+ *  y |  / total
+ *    | /
+ *    |/
+ * INPUT
+ *    x : horizontal component
+ *    y : vertical component
+ * OUTPUT
+ *    total : total component
+ ***********************************************/
+ // your function goes here
 
 
-      /*************************************************
-       * RADIANS FROM DEGEES
-       * Convert degrees to radians:
-       *     radians / 2pi = degrees / 360
-       * INPUT
-       *     d : degrees from 0 to 360
-       * OUTPUT
-       *     r : radians from 0 to 2pi
-       **************************************************/
-       // your function goes here
+/*************************************************
+ * RADIANS FROM DEGEES
+ * Convert degrees to radians:
+ *     radians / 2pi = degrees / 360
+ * INPUT
+ *     d : degrees from 0 to 360
+ * OUTPUT
+ *     r : radians from 0 to 2pi
+ **************************************************/
+ // your function goes here
 
-       /**************************************************
-        * PROMPT
-        * A generic function to prompt the user for a double
-        * INPUT
-        *      message : the message to display to the user
-        * OUTPUT
-        *      response : the user's response
-        ***************************************************/
-        // your function goes here
+/**************************************************
+ * PROMPT
+ * A generic function to prompt the user for a double
+ * INPUT
+ *      message : the message to display to the user
+ * OUTPUT
+ *      response : the user's response
+ ***************************************************/
+ // your function goes here
 
-        /****************************************************************
-         * MAIN
-         * Prompt for input, compute new position, and display output
-         ****************************************************************/
+/****************************************************************
+ * MAIN
+ * Prompt for input, compute new position, and display output
+ ****************************************************************/
 int main()
 {
     // Prompt for input and variables to be computed
