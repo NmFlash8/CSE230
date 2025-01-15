@@ -11,14 +11,15 @@
  * 5. How long did it take for you to complete the assignment?
  *      -total time in hours: reading the assignment, submitting, etc.
  **************************************************************/
-   
+
 #include <iostream>  // for CIN and COUT
 #include <cmath>     // for sin, cos, pi, and hypot
 using namespace std;
-   
+
 #define WEIGHT   15103.000   // Weight in KG
 #define GRAVITY     -1.625   // Vertical acceleration due to gravity, in m/s^2
 #define THRUST   45000.000   // Thrust of main engine, in Newtons (kg m/s^2)
+#define M_PI 3.14159265358979323846
 
 /***************************************************
  * COMPUTE DISTANCE
@@ -42,17 +43,17 @@ double computeDistance(double s, double v, double a, double t)
    return s + v * t + 0.5 * a * t * t;
 }
 
- /**************************************************
-  * COMPUTE ACCELERATION
-  * Find the acceleration given a thrust and mass.
-  * This will be done using Newton's second law of motion:
-  *     f = m * a
-  * INPUT
-  *     f : force, in Newtons (kg * m / s^2)
-  *     m : mass, in kilograms
-  * OUTPUT
-  *     a : acceleration, in meters/second^2
-  ***************************************************/
+/**************************************************
+ * COMPUTE ACCELERATION
+ * Find the acceleration given a thrust and mass.
+ * This will be done using Newton's second law of motion:
+ *     f = m * a
+ * INPUT
+ *     f : force, in Newtons (kg * m / s^2)
+ *     m : mass, in kilograms
+ * OUTPUT
+ *     a : acceleration, in meters/second^2
+ ***************************************************/
 double computeAcceleration(double f, double m)
 {
    // Simplfied Algebra
@@ -74,7 +75,7 @@ double computeAcceleration(double f, double m)
  * OUTPUT
  *     v : new velocity, in meters/second
  ***********************************************/
-double computeVelocity(double v, double a, double t) 
+double computeVelocity(double v, double a, double t)
 {
    // v = v + a * t
    return v + a * t;
@@ -99,7 +100,7 @@ double computeVelocity(double v, double a, double t)
  * OUTPUT
  *     y : the vertical component of the total
  ***********************************************/
-double computeVerticalComponent(double a, double y, double total)
+double computeVerticalComponent(double a, double total)
 {
    // Simplfied Algebra
    // y = cos(a) * total   Move total to the other side.
@@ -157,7 +158,7 @@ double computeTotalComponent(double x, double y)
    // t^2 = x^2 + y^2      Move the total
    // t = sqrt(x^2 + y^2)  Apply sqrt to both sides
    // t = hypot(x, y)      Use the hypotenuse for further simplification
-   return hypot(x, y)
+   return hypot(x, y);
 }
 
 
@@ -176,7 +177,8 @@ double radiansFromDegrees(double d)
    // Simplified Algebra
    // r / 2 * M_PI = d / 360         Standard
    // r = (d / 360.0) * 2.0 * M_PI   Separate r 
-   return d / 360.0 * 2.0 * M_PI;
+   // r = (d / 360.0) * 2.0 * M_PI   Simplify
+   return d / 180.0 * M_PI;
 }
 
 /**************************************************
@@ -187,7 +189,7 @@ double radiansFromDegrees(double d)
  * OUTPUT
  *      response : the user's response
  ***************************************************/
-double prompt(const char* message) 
+double prompt(const char* message)
 {
    double response;
    cout << message;
@@ -208,20 +210,23 @@ int main()
    double x = prompt("What is your position (m)? ");
    double aDegrees = prompt("What is the angle of the LM where 0 is up (degrees)? ");
    double t = prompt("What is the time interval (s)? ");
-   double aRadians;            // Angle in radians
-   double accelerationThrust;  // Acceleration due to thrust 
-   double ddxThrust;           // Horizontal acceleration due to thrust
-   double ddyThrust;           // Vertical acceleration due to thrust
-   double ddx;                 // Total horizontal acceleration
-   double ddy;                 // Total vertical acceleration
-   double v;                   // Total velocity
+   double aRadians = radiansFromDegrees(aDegrees); // Convert angle to radians
+   double accelerationThrust = computeAcceleration(THRUST, WEIGHT); // Thrust acceleration
+   double ddxThrust, ddyThrust, ddx, ddy, v;
 
-   // Go through the simulator five times
+   cout.setf(ios::fixed | ios::showpoint);
+   cout.precision(2);
+
+   // Simulate the lander for five intervals
    for (int simulation = 0; simulation < 5; ++simulation)
    {
-      // Compute accelerations
-      double ddx = ddxThrust;
-      double ddy = ddyThrust + GRAVITY;
+      // Compute thrust components
+      ddxThrust = computeHorizontalComponent(aRadians, accelerationThrust);
+      ddyThrust = computeVerticalComponent(aRadians, accelerationThrust);
+
+      // Total accelerations
+      ddx = ddxThrust;
+      ddy = ddyThrust + GRAVITY; // Include gravity in vertical acceleration
 
       // Update position
       x = computeDistance(x, dx, ddx, t);
@@ -232,14 +237,13 @@ int main()
       dy = computeVelocity(dy, ddy, t);
 
       // Compute total velocity
-      double v = computeTotalComponent(dx, dy);
+      v = computeTotalComponent(dx, dy);
 
-      // Output
-      cout.setf(ios::fixed | ios::showpoint);
-      cout.precision(2);
-      cout << "\tNew position:   (" << x << ", " << y << ")m\n";
-      cout << "\tNew velocity:   (" << dx << ", " << dy << ")m/s\n";
-      cout << "\tTotal velocity:  " << v << "m/s\n\n";
+      // Output results
+      cout << "\tNew position:   (" << x << ", " << y << ") m\n";
+      cout << "\tNew velocity:   (" << dx << ", " << dy << ") m/s\n";
+      cout << "\tTotal velocity:  " << v << " m/s\n\n";
    }
+
    return 0;
 }
