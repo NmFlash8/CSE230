@@ -13,7 +13,7 @@
  **************************************************************/
    
 #include <iostream>  // for CIN and COUT
-#include <cmath> // for power, sin, cos, pi.
+#include <cmath>     // for power, sin, cos, pi, hypot...
 using namespace std;
    
 #define WEIGHT   15103.000   // Weight in KG
@@ -35,8 +35,11 @@ using namespace std;
  **************************************************/
 double computeDistance(double s, double v, double a, double t)
 {
-   double s = s + v t + 0.5 * a * pow(t, 2.0);
-   return s;
+   // Simplfied Algebra
+   // s = s + v * t + 1.0 / 2.0 * a * pow(t, 2.0)
+   // s = s + v * t + 0.5 * a * pow(t, 2.0)        Simplify 1 / 2
+   // s = s + v * t + 0.5 * a * t * t              Convert pow(t, 2.0) to t * t
+   return s + v * t + 0.5 * a * t * t;
 }
 
  /**************************************************
@@ -52,7 +55,8 @@ double computeDistance(double s, double v, double a, double t)
   ***************************************************/
 double computeAcceleration(double f, double m)
 {
-   // It returns acceleration.
+   // Simplfied Algebra
+   // a = f / m   Divide m to separate a
    return f / m;
 }
 
@@ -72,8 +76,8 @@ double computeAcceleration(double f, double m)
  ***********************************************/
 double computeVelocity(double v, double a, double t) 
 {
-   v = v + a * t;
-   return v;
+   // v = v + a * t
+   return v + a * t;
 }
 
 
@@ -97,8 +101,9 @@ double computeVelocity(double v, double a, double t)
  ***********************************************/
 double computeVerticalComponent(double a, double y, double total)
 {
-   y = cos(a) * total;
-   return y;
+   // Simplfied Algebra
+   // y = cos(a) * total   Move total to the other side.
+   return cos(a) * total;
 }
 
 
@@ -122,8 +127,9 @@ double computeVerticalComponent(double a, double y, double total)
  ***********************************************/
 double computeHorizontalComponent(double a, double total)
 {
-   x = sin(a) * total;
-   return x;
+   // Simplfied Algebra
+   // x = sin(a) * total   Move total to the other side.
+   return sin(a) * total;
 }
 
 /************************************************
@@ -147,9 +153,11 @@ double computeHorizontalComponent(double a, double total)
  ***********************************************/
 double computeTotalComponent(double x, double y)
 {
-   // Apply Pythagorean Theorem in order to return JUST total.
-   total = sqrt(pow(x, 2.0) + pow(y, 2.0));
-   return total;
+   // Simplified Algebra
+   // t^2 = x^2 + y^2      Move the total
+   // t = sqrt(x^2 + y^2)  Apply sqrt to both sides
+   // t = hypot(x, y)      Use the hypotenuse for further simplification
+   return hypot(x, y)
 }
 
 
@@ -164,8 +172,11 @@ double computeTotalComponent(double x, double y)
  **************************************************/
 double radiansFromDegrees(double d)
 {
-   r = (d / 360.0) * 2.0 * M_PI;
-   return r;
+   // M_PI stands for pi 3.14
+   // Simplified Algebra
+   // r / 2 * M_PI = d / 360         Standard
+   // r = (d / 360.0) * 2.0 * M_PI   Separate r 
+   return d / 360.0 * 2.0 * M_PI;
 }
 
 /**************************************************
