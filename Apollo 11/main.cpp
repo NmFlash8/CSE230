@@ -13,7 +13,7 @@
  **************************************************************/
    
 #include <iostream>  // for CIN and COUT
-#include <cmath> // Using for pow.
+#include <cmath> // for power, sin, cos.
 using namespace std;
    
 #define WEIGHT   15103.000   // Weight in KG
@@ -145,7 +145,12 @@ double computeHorizontalComponent(double a, double total)
  * OUTPUT
  *    total : total component
  ***********************************************/
- // your function goes here
+double computeTotalComponent(double x, double y)
+{
+   // Apply Pythagorean Theorem in order to return JUST total.
+   total = sqrt(pow(x, 2) + pow(y, 2))
+   return total
+}
 
 
 /*************************************************
