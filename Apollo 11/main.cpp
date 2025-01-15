@@ -13,7 +13,7 @@
  **************************************************************/
    
 #include <iostream>  // for CIN and COUT
-#include <cmath> // using for pow
+#include <cmath> // Using for pow.
 using namespace std;
    
 #define WEIGHT   15103.000   // Weight in KG
@@ -66,7 +66,11 @@ double computeDistance(double s, double v, double a, double t)
    * OUTPUT
    *     v : new velocity, in meters/second
    ***********************************************/
-   // your function goes here
+double computeVelocity(double v, double a, double t) 
+{
+   v = v + a * t;
+   return v;
+}
 
 
    /***********************************************
