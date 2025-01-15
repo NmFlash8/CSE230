@@ -7,7 +7,8 @@
  * 3. Assignment Description:
  *      Compute how the Apollo lander will move across the screen
  * 4. What was the hardest part? Be as specific as possible.
- *      One of the hardest part of this assignment was having everything set up, and running with a new platform. Using funtions was simple but took a liltle effort unsing another type of syntaxt.
+ *      One of the hardest part of this assignment was having everything set up, and running with a new platform.
+ *      Using funtions was simple but took a liltle effort unsing another type of syntaxt.
  * 5. How long did it take for you to complete the assignment?
  *      time in total was 3 hours including readings and during meetings.
  **************************************************************/
