@@ -176,7 +176,13 @@ double radiansFromDegrees(double d)
  * OUTPUT
  *      response : the user's response
  ***************************************************/
- // your function goes here
+double prompt(const char* message) 
+{
+    double response;
+    cout << message;
+    cin >> response;
+    return response;
+}
 
 /****************************************************************
  * MAIN
