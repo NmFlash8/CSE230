@@ -1,15 +1,15 @@
 /*************************************************************
  * 1. Name:
- *      Deigo Estrada
+ *      Diego Estrada
  *      Noah McSheehy
  * 2. Assignment Name:
  *      Practice 02: Physics simulator
  * 3. Assignment Description:
  *      Compute how the Apollo lander will move across the screen
  * 4. What was the hardest part? Be as specific as possible.
- *      -a paragraph or two about how the assignment went for you-
+ *      One of the hardest part of this assignment was having everything set up, and running with a new platform. Using funtions was simple but took a liltle effort unsing another type of syntaxt.
  * 5. How long did it take for you to complete the assignment?
- *      -total time in hours: reading the assignment, submitting, etc.
+ *      time in total was 3 hours including readings and during meetings.
  **************************************************************/
 
 #include <iostream>  // for CIN and COUT
