@@ -1,6 +1,7 @@
 /*************************************************************
  * 1. Name:
- *      -your name-
+ *      Deigo Estrada
+ *      Noah McSheehy
  * 2. Assignment Name:
  *      Practice 02: Physics simulator
  * 3. Assignment Description:
@@ -10,10 +11,10 @@
  * 5. How long did it take for you to complete the assignment?
  *      -total time in hours: reading the assignment, submitting, etc.
  **************************************************************/
-
+   
 #include <iostream>  // for CIN and COUT
 using namespace std;
-
+   
 #define WEIGHT   15103.000   // Weight in KG
 #define GRAVITY     -1.625   // Vertical acceleration due to gravity, in m/s^2
 #define THRUST   45000.000   // Thrust of main engine, in Newtons (kg m/s^2)
