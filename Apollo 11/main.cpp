@@ -13,7 +13,7 @@
  **************************************************************/
    
 #include <iostream>  // for CIN and COUT
-#include <cmath> // for power, sin, cos.
+#include <cmath> // for power, sin, cos, pi.
 using namespace std;
    
 #define WEIGHT   15103.000   // Weight in KG
@@ -148,7 +148,7 @@ double computeHorizontalComponent(double a, double total)
 double computeTotalComponent(double x, double y)
 {
    // Apply Pythagorean Theorem in order to return JUST total.
-   total = sqrt(pow(x, 2) + pow(y, 2));
+   total = sqrt(pow(x, 2.0) + pow(y, 2.0));
    return total;
 }
 
@@ -164,7 +164,7 @@ double computeTotalComponent(double x, double y)
  **************************************************/
 double radiansFromDegrees(double d)
 {
-   r = (d / 360) * 2 pi;
+   r = (d / 360.0) * 2.0 * M_PI;
    return r;
 }
 
