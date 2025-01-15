@@ -97,7 +97,7 @@ double computeVelocity(double v, double a, double t)
  ***********************************************/
 double computeVerticalComponent(double a, double y, double total)
 {
-   y = cos(a) * total
+   y = cos(a) * total;
    return y;
 }
 
@@ -122,7 +122,7 @@ double computeVerticalComponent(double a, double y, double total)
  ***********************************************/
 double computeHorizontalComponent(double a, double total)
 {
-   x = sin(a) * total
+   x = sin(a) * total;
    return x;
 }
 
@@ -148,13 +148,13 @@ double computeHorizontalComponent(double a, double total)
 double computeTotalComponent(double x, double y)
 {
    // Apply Pythagorean Theorem in order to return JUST total.
-   total = sqrt(pow(x, 2) + pow(y, 2))
-   return total
+   total = sqrt(pow(x, 2) + pow(y, 2));
+   return total;
 }
 
 
 /*************************************************
- * RADIANS FROM DEGEES
+ * RADIANS FROM DEGREES
  * Convert degrees to radians:
  *     radians / 2pi = degrees / 360
  * INPUT
@@ -162,7 +162,11 @@ double computeTotalComponent(double x, double y)
  * OUTPUT
  *     r : radians from 0 to 2pi
  **************************************************/
- // your function goes here
+double radiansFromDegrees(double d)
+{
+   r = (d / 360) * 2 pi;
+   return r;
+}
 
 /**************************************************
  * PROMPT
