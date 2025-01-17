@@ -37,11 +37,11 @@ using namespace std;
  **************************************************/
 double computeDistance(double s, double v, double a, double t)
 {
-   // Simplfied Algebra
-   // s = s + v * t + 1.0 / 2.0 * a * pow(t, 2.0)
-   // s = s + v * t + 0.5 * a * pow(t, 2.0)        Simplify 1 / 2
-   // s = s + v * t + 0.5 * a * t * t              Convert pow(t, 2.0) to t * t
-   return s + v * t + 0.5 * a * t * t;
+    // Simplfied Algebra
+    // s = s + v * t + 1.0 / 2.0 * a * pow(t, 2.0)
+    // s = s + v * t + 0.5 * a * pow(t, 2.0)        Simplify 1 / 2
+    // s = s + v * t + 0.5 * a * t * t              Convert pow(t, 2.0) to t * t
+    return s + v * t + 0.5 * a * t * t;
 }
 
 /**************************************************
@@ -57,9 +57,9 @@ double computeDistance(double s, double v, double a, double t)
  ***************************************************/
 double computeAcceleration(double f, double m)
 {
-   // Simplfied Algebra
-   // a = f / m   Divide m to separate a
-   return f / m;
+    // Simplfied Algebra
+    // a = f / m   Divide m to separate a
+    return f / m;
 }
 
 /***********************************************
@@ -78,8 +78,8 @@ double computeAcceleration(double f, double m)
  ***********************************************/
 double computeVelocity(double v, double a, double t)
 {
-   // v = v + a * t
-   return v + a * t;
+    // v = v + a * t
+    return v + a * t;
 }
 
 
@@ -103,9 +103,9 @@ double computeVelocity(double v, double a, double t)
  ***********************************************/
 double computeVerticalComponent(double a, double total)
 {
-   // Simplfied Algebra
-   // y = cos(a) * total   Move total to the other side.
-   return cos(a) * total;
+    // Simplfied Algebra
+    // y = cos(a) * total   Move total to the other side.
+    return cos(a) * total;
 }
 
 
@@ -129,9 +129,9 @@ double computeVerticalComponent(double a, double total)
  ***********************************************/
 double computeHorizontalComponent(double a, double total)
 {
-   // Simplfied Algebra
-   // x = sin(a) * total   Move total to the other side.
-   return sin(a) * total;
+    // Simplfied Algebra
+    // x = sin(a) * total   Move total to the other side.
+    return sin(a) * total;
 }
 
 /************************************************
@@ -155,11 +155,11 @@ double computeHorizontalComponent(double a, double total)
  ***********************************************/
 double computeTotalComponent(double x, double y)
 {
-   // Simplified Algebra
-   // t^2 = x^2 + y^2      Move the total
-   // t = sqrt(x^2 + y^2)  Apply sqrt to both sides
-   // t = hypot(x, y)      Use the hypotenuse for further simplification
-   return hypot(x, y);
+    // Simplified Algebra
+    // t^2 = x^2 + y^2      Move the total
+    // t = sqrt(x^2 + y^2)  Apply sqrt to both sides
+    // t = hypot(x, y)      Use the hypotenuse for further simplification
+    return hypot(x, y);
 }
 
 
@@ -174,14 +174,14 @@ double computeTotalComponent(double x, double y)
  **************************************************/
 double radiansFromDegrees(double d)
 {
-   // M_PI stands for pi 3.14
-   // Simplified Algebra
-   // r / 2 * M_PI = d / 360         Standard
-   // r = (d / 360.0) * 2.0 * M_PI   Separate r 
-   // r = (d / 360.0) * 2.0 * M_PI   Simplify
-   return d / 180.0 * M_PI;
+    // M_PI stands for pi 3.14
+    // Simplified Algebra
+    // r / 2 * M_PI = d / 360         Standard
+    // r = (d / 360.0) * 2.0 * M_PI   Separate r 
+    // r = (d / 360.0) * 2.0 * M_PI   Simplify
+    return d / 180.0 * M_PI;
 }
- 
+
 /**************************************************
  * PROMPT
  * A generic function to prompt the user for a double
@@ -192,10 +192,44 @@ double radiansFromDegrees(double d)
  ***************************************************/
 double prompt(const char* message)
 {
-   double response;
-   cout << message;
-   cin >> response;
-   return response;
+    double response;
+    cout << message;
+    cin >> response;
+    return response;
+}
+/***************************************************
+ * DISPLAY STATUS
+ * Display the current time, position, velocity, speed,
+ * and angle of the Lunar Module.
+ * INPUT
+ *     time  : current time in seconds
+ *     x     : horizontal position in meters
+ *     y     : vertical position (altitude) in meters
+ *     dx    : horizontal velocity in meters/second
+ *     dy    : vertical velocity in meters/second
+ *     angle : angle of the Lunar Module in degrees
+ ***************************************************/
+
+void displayStatus(int time, double x, double y, double dx, double dy, double angle) {
+    double speed = computeTotalComponent(dx, dy);
+    cout << time << "s - "
+        << "x,y: (" << x << ", " << y << ") m  "
+        << "dx,dy: (" << dx << ", " << dy << ") m/s  "
+        << "speed: " << speed << " m/s  "
+        << "angle: " << angle << " deg" << endl;
+}
+
+/***************************************************
+ * HAS LANDED
+ * Check if the Lunar Module has landed on the surface.
+ * INPUT
+ *     altitude : current altitude in meters
+ * OUTPUT
+ *     true if the module has landed (altitude <= 0), false otherwise
+ ***************************************************/
+
+bool hasLanded(double altitude) {
+    return altitude <= 0.0;
 }
 
 /****************************************************************
@@ -215,6 +249,7 @@ int main()
     double accelX = computeHorizontalComponent(angleRadians, thrustAccel);
     double accelY = computeVerticalComponent(angleRadians, thrustAccel) + GRAVITY;
     double x = 0.0;
+
 
     int t = 1;
     while (!hasLanded(y) && t <= 10) {
