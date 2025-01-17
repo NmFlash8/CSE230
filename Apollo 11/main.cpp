@@ -181,7 +181,7 @@ double radiansFromDegrees(double d)
    // r = (d / 360.0) * 2.0 * M_PI   Simplify
    return d / 180.0 * M_PI;
 }
-
+ 
 /**************************************************
  * PROMPT
  * A generic function to prompt the user for a double
@@ -204,47 +204,42 @@ double prompt(const char* message)
  ****************************************************************/
 int main()
 {
-   // Prompt for input and variables to be computed
-   double dx = prompt("What is your horizontal velocity (m/s)? ");
-   double dy = prompt("What is your vertical velocity (m/s)? ");
-   double y = prompt("What is your altitude (m)? ");
-   double x = prompt("What is your position (m)? ");
-   double aDegrees = prompt("What is the angle of the LM where 0 is up (degrees)? ");
-   double t = prompt("What is the time interval (s)? ");
-   double aRadians = radiansFromDegrees(aDegrees); // Convert angle to radians
-   double accelerationThrust = computeAcceleration(THRUST, WEIGHT); // Thrust acceleration
-   double ddxThrust, ddyThrust, ddx, ddy, v;
+    double dx = prompt("What is your horizontal velocity (m/s)? ");
+    double dy = prompt("What is your vertical velocity (m/s)? ");
+    double y = prompt("What is your altitude (m)? ");
+    double aDegrees = prompt("What is the angle of the LM where 0 is up (degrees)? ");
 
-   cout.setf(ios::fixed | ios::showpoint);
-   cout.precision(2);
+    double angleRadians = radiansFromDegrees(aDegrees);
+    double mass = WEIGHT;
+    double thrustAccel = computeAcceleration(THRUST, mass);
+    double accelX = computeHorizontalComponent(angleRadians, thrustAccel);
+    double accelY = computeVerticalComponent(angleRadians, thrustAccel) + GRAVITY;
+    double x = 0.0;
 
-   // Simulate the lander for five intervals
-   for (int simulation = 0; simulation < 5; ++simulation)
-   {
-      // Compute thrust components
-      ddxThrust = computeHorizontalComponent(aRadians, accelerationThrust);
-      ddyThrust = computeVerticalComponent(aRadians, accelerationThrust);
+    int t = 1;
+    while (!hasLanded(y) && t <= 10) {
+        dx = computeVelocity(dx, accelX, 1);
+        dy = computeVelocity(dy, accelY, 1);
+        x = computeDistance(x, dx, accelX, 1);
+        y = computeDistance(y, dy, accelY, 1);
+        displayStatus(t, x, y, dx, dy, aDegrees);
 
-      // Total accelerations
-      ddx = ddxThrust;
-      ddy = ddyThrust + GRAVITY; // Include gravity in vertical acceleration
+        if (t == 5 && !hasLanded(y)) {
+            aDegrees = prompt("What is the new angle of the LM where 0 is up (degrees)? ");
+            angleRadians = radiansFromDegrees(aDegrees);
+            accelX = computeHorizontalComponent(angleRadians, thrustAccel);
+            accelY = computeVerticalComponent(angleRadians, thrustAccel) + GRAVITY;
+        }
+        t++;
+    }
 
-      // Update position
-      x = computeDistance(x, dx, ddx, t);
-      y = computeDistance(y, dy, ddy, t);
+    if (hasLanded(y)) {
+        cout << "Lunar Module has landed successfully." << endl;
+    }
+    else {
+        cout << "Simulation ended before landing." << endl;
+    }
 
-      // Update velocity
-      dx = computeVelocity(dx, ddx, t);
-      dy = computeVelocity(dy, ddy, t);
+    return 0;
 
-      // Compute total velocity
-      v = computeTotalComponent(dx, dy);
-
-      // Output results
-      cout << "\tNew position:   (" << x << ", " << y << ") m\n";
-      cout << "\tNew velocity:   (" << dx << ", " << dy << ") m/s\n";
-      cout << "\tTotal velocity:  " << v << " m/s\n\n";
-   }
-
-   return 0;
 }
