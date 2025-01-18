@@ -239,6 +239,9 @@ int main()
    double aDegrees = prompt("What is the angle of the LM where 0 is up (degrees)? ");
    double t = 1.0; // Time
 
+   // Blank line seporator
+   cout << endl;
+
    // Calculate aditional conditions
    double aRadians = radiansFromDegrees(aDegrees);
    double accelerationThrust = computeAcceleration(THRUST, WEIGHT);
@@ -253,11 +256,13 @@ int main()
       if (simulation % 5 == 0) // Display the message at the start and every 5th simulation
       {
          cout << "For the next 5 seconds with the main engine on, the position of the lander is: \n";
+         cout << endl;
       }
       if (simulation == 5) // Allow rotation change at the 5-second mark
       {
          aDegrees = prompt("Enter new angle for the LM (degrees): ");
          aRadians = radiansFromDegrees(aDegrees);
+         cout << endl;
       }
 
       // Compute thrust components
