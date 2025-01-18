@@ -1,21 +1,27 @@
 /*************************************************************
  * 1. Name:
  *      Diego Estrada
- *      Noah McSheehy
+ *      Noah Mcsheehy
  * 2. Assignment Name:
- *      Practice 02: Physics simulator
+ *      Lab 02: Apollo 11
  * 3. Assignment Description:
- *      Compute how the Apollo lander will move across the screen
+ *      Simulate the Apollo 11 landing
  * 4. What was the hardest part? Be as specific as possible.
- *      One of the hardest part of this assignment was having everything set up, and running with a new platform.
- *      Using funtions was simple but took a liltle effort unsing another type of syntaxt.
+ *      It took us a little while to figure out that the program 
+ *      just needed a few adjustments to work. For example we didn't 
+ *      realize the position was suppose to be assumed to 0, and figuring 
+ *      out how to measure in speed was confusing till we saw it was 
+ *      already a variable the functions were using.
  * 5. How long did it take for you to complete the assignment?
- *      time in total was 3 hours including readings and during meetings.
- **************************************************************/
+ *      ~3 hours. 30 minutes for formatting, 
+ *      1 hour for reading and understanding 
+ *      1.5 hours for coding 
+ *****************************************************************/
+
 
 #include <iostream>  // for CIN and COUT
 #include <cmath>     // for sin, cos, pi, and hypot
-#include <iomanip>   // for setw()
+#include <iomanip>   // for setw() formatting
 using namespace std;
 
 #define WEIGHT   15103.000   // Weight in KG
