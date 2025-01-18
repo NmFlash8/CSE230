@@ -15,12 +15,13 @@
 
 #include <iostream>  // for CIN and COUT
 #include <cmath>     // for sin, cos, pi, and hypot
+#include <iomanip>   // for setw()
 using namespace std;
 
 #define WEIGHT   15103.000   // Weight in KG
 #define GRAVITY     -1.625   // Vertical acceleration due to gravity, in m/s^2
 #define THRUST   45000.000   // Thrust of main engine, in Newtons (kg m/s^2)
-#define M_PI 3.14159265358979323846 // Had issues importing M_PI from cmath, so we just declared it as a global variable.
+#define M_PI 3.14159265358979323846 // Had issues importing M_PI from cmath, so we just declared it as a constant.
 
 /***************************************************
  * COMPUTE DISTANCE
@@ -214,11 +215,13 @@ double prompt(const char* message)
  ***************************************************/
 void displayStatus(int time, double x, double y, double dx, double dy, double angle) {
    double speed = computeTotalComponent(dx, dy);
-   cout << time << "s - "
-      << "x,y: (" << x << ", " << y << ") m  "
-      << "dx,dy: (" << dx << ", " << dy << ") m/s  "
-      << "speed: " << speed << " m/s  "
-      << "angle: " << angle << " deg" << endl;
+   // Display the console out in the mannor shown in example
+   cout << setw(2)    << time  << "s - "
+        << "x,y: ("   << x     << ", "   << y  << ") m  "
+        << "dx,dy: (" << dx    << ", "   << dy << ") m/s  "
+        << "speed: "  << speed << " m/s  "
+        << "angle: "  << angle << " deg" << endl;
+
 }
 
 
@@ -235,16 +238,22 @@ int main()
    double x = 0.0; // Position
    double aDegrees = prompt("What is the angle of the LM where 0 is up (degrees)? ");
    double t = 1.0; // Time
-   double aRadians = radiansFromDegrees(aDegrees);
 
+   // Calculate aditional conditions
+   double aRadians = radiansFromDegrees(aDegrees);
    double accelerationThrust = computeAcceleration(THRUST, WEIGHT);
    double ddxThrust, ddyThrust, ddx, ddy, v;
 
+   // Set the console out display to show decimals
    cout.setf(ios::fixed | ios::showpoint);
    cout.precision(2);
 
    for (int simulation = 0; simulation < 10; ++simulation)
    {
+      if (simulation % 5 == 0) // Display the message at the start and every 5th simulation
+      {
+         cout << "For the next 5 seconds with the main engine on, the position of the lander is: \n";
+      }
       if (simulation == 5) // Allow rotation change at the 5-second mark
       {
          aDegrees = prompt("Enter new angle for the LM (degrees): ");
