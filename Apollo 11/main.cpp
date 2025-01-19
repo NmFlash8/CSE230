@@ -18,7 +18,6 @@
  *      1.5 hours for coding 
  *****************************************************************/
 
-
 #include <iostream>  // for CIN and COUT
 #include <cmath>     // for sin, cos, pi, and hypot
 #include <iomanip>   // for setw() formatting
