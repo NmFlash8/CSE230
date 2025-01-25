@@ -12,19 +12,19 @@
 #include <cassert>
 using namespace std;
 
-/*************************************
+/******************************
  * ANGLE : Default constructor
- *************************************/
+ ******************************/
 Angle::Angle() : radians(0.0) {}
 
-/*************************************
+/***************************
  * ANGLE : Copy constructor
- *************************************/
+ ***************************/
 Angle::Angle(const Angle& rhs) : radians(rhs.radians) {}
 
-/*************************************
+/**********************************
  * ANGLE : Constructor with degrees
- *************************************/
+ **********************************/
 Angle::Angle(double degrees) : radians(convertToRadians(degrees)) {}
 
 /*************************************
@@ -43,10 +43,10 @@ double Angle::convertToRadians(double degrees) const
    return degrees * (M_PI / 180.0);  // Convert degrees to radians
 }
 
-/*************************************
+/*************************************************
  * ANGLE : Normalize radians
  * Prevents radians from going over or under 2 Pi
- *************************************/
+ *************************************************/
 double Angle::normalize(double radians) const
 {
    const double TWO_PI = 2 * M_PI;
@@ -62,17 +62,17 @@ double Angle::normalize(double radians) const
 }
 
 
-/*************************************
+/***********************************
  * ANGLE : Get the angle in radians
- *************************************/
+ ***********************************/
 double Angle::getRadians() const
 {
    return radians;
 }
 
-/*************************************
+/**********************************
  * ANGLE : Get the angle in degrees
- *************************************/
+ **********************************/
 double Angle::getDegrees() const
 {
    return convertToDegrees();
@@ -135,9 +135,9 @@ void Angle::reverse()
    radians = normalize(radians + M_PI);
 }
 
-/*************************************
+/********************************************
  * ANGLE : Add a delta to the current radians
- *************************************/
+ ********************************************/
 Angle& Angle::add(double delta)
 {
    radians = normalize(radians + delta);
