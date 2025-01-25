@@ -49,21 +49,18 @@ double Angle::convertToRadians(double degrees) const
  *************************************/
 double Angle::normalize(double radians) const
 {
-   const double twoPi = 2 * M_PI;  // 2pi constant
+   const double TWO_PI = 2 * M_PI;
 
-   // Normalize radians to the range [0, 2pi)
-   while (radians < 0)
-   {
-      radians += twoPi;  // If radians is less than 0, add 2pi
-   }
+   // Normalize the angle to be within [0, 2 * M_PI]
+   radians = fmod(radians, TWO_PI);
 
-   while (radians >= twoPi)
-   {
-      radians -= twoPi;  // If radians is greater than or equal to 2pi, subtract 2pi
-   }
+   // If radians is negative, make it positive by adding TWO_PI
+   if (radians < 0)
+      radians += TWO_PI;
 
    return radians;
 }
+
 
 /*************************************
  * ANGLE : Get the angle in radians
@@ -87,6 +84,7 @@ double Angle::getDegrees() const
 void Angle::setDegrees(double degrees)
 {
    radians = convertToRadians(degrees);
+   radians = normalize(radians);
 }
 
 /*************************************
@@ -97,41 +95,41 @@ void Angle::setRadians(double radians)
    this->radians = normalize(radians);
 }
 
-/*************************************
+/*****************************************
  * ANGLE : Set the angle to 0 radians (up)
- *************************************/
+ *****************************************/
 void Angle::setUp()
 {
    radians = 0.0;
 }
 
-/*************************************
+/********************************************
  * ANGLE : Set the angle to Pi radians (down)
- *************************************/
+ ********************************************/
 void Angle::setDown()
 {
    radians = M_PI;
 }
 
-/*************************************
+/***********************************************
  * ANGLE : Set the angle to Pi/2 radians (right)
- *************************************/
+ ***********************************************/
 void Angle::setRight()
 {
    radians = M_PI / 2;
 }
 
-/*************************************
+/***********************************************
  * ANGLE : Set the angle to 3Pi/2 radians (left)
- *************************************/
+ ***********************************************/
 void Angle::setLeft()
 {
    radians = 3 * M_PI / 2;
 }
 
-/*************************************
+/**********************************************
  * ANGLE : Reverse the direction by Pi radians
- *************************************/
+ **********************************************/
 void Angle::reverse()
 {
    radians = normalize(radians + M_PI);
