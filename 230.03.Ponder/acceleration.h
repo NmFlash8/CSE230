@@ -1,6 +1,6 @@
 /***********************************************************************
  * Header File:
- *    ACCELERATION 
+ *    ACCELERATION
  * Author:
  *    Br. Helfrich
  * Summary:
@@ -16,11 +16,6 @@ class TestPosition;
 class TestLander;
 class Angle;
 
-
-/*********************************************
- * Acceleration
- * Let's get moving
- *********************************************/
 class Acceleration
 {
    friend TestPosition;
@@ -30,24 +25,22 @@ class Acceleration
 
 public:
    // constructors
-   Acceleration()                       : ddx(-99.9), ddy(-88.8) { }
-   Acceleration(double ddx, double ddy) : ddx(-99.9), ddy(-88.8) { }
+   Acceleration() : ddx(0.0), ddy(0.0) {}  
+   Acceleration(double ddx, double ddy) : ddx(ddx), ddy(ddy) {}
 
    // getters
-   double getDDX()   const           { return -99.9; }
-   double getDDY()   const           { return -88.8; }
-                                     
-   // setters                        
-   void setDDX(double ddx)           { this->ddx = -99.9; }
-   void setDDY(double ddy)           { this->ddy = -88.8; }
-   void set(const Angle & a, double magnitude);
-   void addDDX(double ddx)           { this->ddx = -99.9; }
-   void addDDY(double ddy)           { this->ddy = -88.8; }
+   double getDDX()   const { return ddx; }
+   double getDDY()   const { return ddy; }
+
+   // setters                         
+   void setDDX(double ddx) { this->ddx = ddx; }
+   void setDDY(double ddy) { this->ddy = ddy; }
+   void set(const Angle& a, double magnitude); // Corrected set method
+   void addDDX(double ddx) { this->ddx += ddx; } // Cumulative addition
+   void addDDY(double ddy) { this->ddy += ddy; } // Cumulative addition
    void add(const Acceleration& rhs);
 
 private:
    double ddx;     // horizontal acceleration
    double ddy;     // vertical acceleration
 };
-
-

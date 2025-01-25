@@ -1,35 +1,42 @@
 /***********************************************************************
  * Source File:
- *    ACCELERATION 
+ *    ACCELERATION
  * Author:
  *    Br. Helfrich
  * Summary:
- *    Everything we need to know about changing speed
+ *    Definitions for the methods of the Acceleration class
  ************************************************************************/
 
 #include "acceleration.h"
 #include "angle.h"
 
-#include <cmath>
+#include <cmath>  
 
-/*********************************************
- * ACCELERATION : ADD
- *  a += a
- *********************************************/
-void Acceleration::add(const Acceleration& acceleration)
+ /*********************************************
+  * Set the acceleration based on angle and magnitude
+  *********************************************/
+void Acceleration::set(const Angle& a, double magnitude)
 {
-   ddx = -99.9;
-   ddy = -88.8;
+   // Handle edge case where magnitude is zero
+   if (magnitude == 0.0)
+   {
+      ddx = 0.0;
+      ddy = 0.0;
+      return;  
+   }
+
+   double radians = a.getDegrees() * (M_PI / 180.0); // Convert angle to radians
+
+   // Apply trigonometry to calculate the acceleration components
+   ddx = magnitude * cos(radians); // Horizontal component (X-axis)
+   ddy = magnitude * sin(radians); // Vertical component (Y-axis)
+
+   
 }
 
-/*********************************************
- * ACCELERATION : SET
- *  set from angle and direction
- *********************************************/
-void Acceleration::set(const Angle & angle, double magnitude)
+
+void Acceleration::add(const Acceleration& rhs)
 {
-   ddx = -99.9;
-   ddy = -88.8;
+   this->ddx += rhs.ddx; // Accumulate horizontal acceleration
+   this->ddy += rhs.ddy; // Accumulate vertical acceleration
 }
-
-
