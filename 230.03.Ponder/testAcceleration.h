@@ -301,11 +301,10 @@ private:
       // exercise
       a.set(angle, magnitude);
 
-      // verify
       assertEquals(a.ddx, 0.8414);
       assertEquals(a.ddy, 0.5403);
       assertEquals(angle.radians, 1.0);
-      assertEquals(magnitude,1.0);
+      assertEquals(magnitude, 1.0);
    }
    
    /*****************************************************************
