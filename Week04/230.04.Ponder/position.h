@@ -25,7 +25,7 @@ class Position
 
 public:
    // constructors
-   Position() : x(0.0), y(0.0) { }
+   Position()                    : x(0.0),   y(0.0)   { }
    Position(const Position& pos) : x(pos.x), y(pos.y) { }
    Position(double x, double y);
 
@@ -42,8 +42,8 @@ public:
    }
 
    // setters
-   void setX(double x) { this->x = x; }
-   void setY(double y) { this->y = y; }
+   void setX(double x) { this->x = x;  }
+   void setY(double y) { this->y = y;  }
    void addX(double x) { this->x += x; }
    void addY(double y) { this->y += y; }
    void add(const Acceleration& a, const Velocity& v, double t);

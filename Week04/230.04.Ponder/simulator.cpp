@@ -23,7 +23,7 @@ class Simulator
 public:
    // set up the simulator
    Simulator(const Position& posUpperRight) : 
-      ground(posUpperRight),
+      ground(posUpperRight),                                         // ground position
       posLander(posUpperRight.getX() / 2, posUpperRight.getY() / 2), // Place the landar in the center of the screen
       posStar(200, 300),                                             // Place the star above the landar
       phase(2) {}                                                    // Choose a phase to start the star
@@ -71,9 +71,9 @@ void callBack(const Interface* pUI, void* p)
 
    // handle input
    if (pUI->isRight())
-      pSimulator->a.add(.1);  // rotate right by 5 degrees
+      pSimulator->a.add(.1);  // rotate lander right
    if (pUI->isLeft())
-      pSimulator->a.add(-.1); // rotate left by 5 degrees
+      pSimulator->a.add(-.1); // rotate lander left
 
    // increment the phase to make the star twinkle
    pSimulator->phase++;
