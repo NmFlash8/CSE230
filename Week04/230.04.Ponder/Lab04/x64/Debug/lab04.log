@@ -1,8 +1,2 @@
-﻿  ground.cpp
-  position.cpp
-  simulator.cpp
-  test.cpp
-  uiDraw.cpp
-  uiInteract.cpp
-  Generating Code...
+﻿  simulator.cpp
   lab04.vcxproj -> C:\Users\nmcsh\Documents\GitHub\CSE230\Week04\230.04.Ponder\x64\Debug\Lab04.exe
