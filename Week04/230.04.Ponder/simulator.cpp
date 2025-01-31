@@ -70,8 +70,10 @@ void callBack(const Interface* pUI, void* p)
    pSimulator->display();
 
    // handle input
-   if (pUI->isRight());   // rotate right here
-   if (pUI->isLeft());    // rotate left here
+   if (pUI->isRight())
+      pSimulator->a.add(.1);  // rotate right by 5 degrees
+   if (pUI->isLeft())
+      pSimulator->a.add(-.1); // rotate left by 5 degrees
 
    // increment the phase to make the star twinkle
    pSimulator->phase++;
