@@ -1,11 +1,2 @@
-﻿  acceleration.cpp
-  angle.cpp
-  ground.cpp
-  position.cpp
-  simulator.cpp
-  test.cpp
-  uiDraw.cpp
-  uiInteract.cpp
-  velocity.cpp
-  Generating Code...
-  lab04.vcxproj -> C:\Users\nmcsh\Documents\GitHub\CSE230\Week04\230.04.Ponder\x64\Debug\Lab04.exe
+﻿  velocity.cpp
+  lab04.vcxproj -> C:\Users\diego\OneDrive\Desktop\BYUI\Winter Semester 2025\Encapsulation Design\week04\CSE230\Week04\230.04.Ponder\x64\Debug\Lab04.exe

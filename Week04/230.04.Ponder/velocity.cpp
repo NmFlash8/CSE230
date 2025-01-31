@@ -13,15 +13,6 @@
 
 #include <math.h>  // for sqrt()
 
-/*********************************************
- * VELOCITY : ADD
- *  v = v_0 + a t
- *********************************************/
-void Velocity::add(const Acceleration& acceleration, double time)
-{
-   dx = 99.9;
-   dy = 88.8;
-}
 
 /*********************************************
  * VELOCITY : GET SPEED
@@ -29,7 +20,7 @@ void Velocity::add(const Acceleration& acceleration, double time)
  *********************************************/
 double Velocity::getSpeed() const
 {
-   return -11.1;
+   return sqrt(dx * dx + dy * dy); // Magnitude of velocity
 }
 
 /*********************************************
@@ -38,6 +29,34 @@ double Velocity::getSpeed() const
  *********************************************/
 void Velocity::set(const Angle & angle, double magnitude)
 {
-   dx = 99.9;
-   dy = 88.8;
+   dy = magnitude * cos(angle.getRadians());
+   dx = magnitude * sin(angle.getRadians());
+}
+
+/*********************************************
+ * VELOCITY : ADD DX
+ * Increment horizontal velocity
+ *********************************************/
+void Velocity::addDX(double ddx)
+{
+   dx += ddx;
+}
+
+/*********************************************
+ * VELOCITY : ADD DY
+ * Increment vertical velocity
+ *********************************************/
+void Velocity::addDY(double ddy)
+{
+   dy += ddy;
+}
+
+/*********************************************
+ * VELOCITY : ADD
+ *  v = v_0 + a t
+ *********************************************/
+void Velocity::add(const Acceleration& acceleration, double time)
+{
+   dx += acceleration.getDDX() * time; // Update horizontal velocity
+   dy += acceleration.getDDY() * time; // Update vertical velocity
 }
