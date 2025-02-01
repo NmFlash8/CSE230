@@ -14,46 +14,61 @@
 using namespace std;
 
 
-/*************************************************************************
+/****************************************
  * SIMULATOR
  * Everything pertaining to the simulator.
- *************************************************************************/
+ ****************************************/
 class Simulator
 {
 public:
-   // set up the simulator
-   Simulator(const Position& posUpperRight) : 
-      ground(posUpperRight),                                         // ground position
-      posLander(posUpperRight.getX() / 2, posUpperRight.getY() / 2), // Place the landar in the center of the screen
-      posStar(200, 300),                                             // Place the star above the landar
-      phase(2) {}                                                    // Choose a phase to start the star
+   // Constructor
+   Simulator(const Position& posUpperRight);
 
-   // display stuff on the screen
+   // Display function
    void display();
 
+   // Handle user input
+   void handleInput(const Interface* pUI);
+
+private:
    Angle a;
    Ground ground;
-   Position posLander; // Declare posLander here
-   Position posStar;   // Declare posStar here
-   int phase;          // Declare phase variable here
+   Position posLander;
+   Position posStar;
+   int phase;
 };
 
-/**********************************************************
- * DISPLAY
- * Draw on the screen
- **********************************************************/
+// Constructor Implementation
+Simulator::Simulator(const Position& posUpperRight)
+   : ground(posUpperRight),
+   posLander(posUpperRight.getX() / 2, posUpperRight.getY() / 2),
+   posStar(200, 300),
+   phase(2) {}
+
+/******************************
+ * SIMULATOR DISPLAY
+ * Places objects on the screen
+ ******************************/
 void Simulator::display()
 {
    ogstream gout;
-
-   // draw the ground
    ground.draw(gout);
-
-   // draw the lander
    gout.drawLander(posLander, a.getRadians());
-
-   // draw a star
    gout.drawStar(posStar, phase);
+}
+
+/***********************************
+ * SIMULATOR HANDLE INPUT
+ * moves objects based on user input
+ ***********************************/
+void Simulator::handleInput(const Interface* pUI)
+{
+   if (pUI->isRight())
+      a.add(-0.1);  // Rotate right
+   if (pUI->isLeft())
+      a.add(0.1);   // Rotate left
+
+   phase++; // Update star twinkling phase
 }
 
 /*************************************
@@ -62,27 +77,17 @@ void Simulator::display()
  **************************************/
 void callBack(const Interface* pUI, void* p)
 {
-   // the first step is to cast the void pointer into a game object. This
-   // is the first step of every single callback function in OpenGL. 
-   Simulator* pSimulator = (Simulator*)p;
+   Simulator* pSimulator = static_cast<Simulator*>(p);
 
-   // draw the game
+   // Draw the game
    pSimulator->display();
 
-   // handle input
-   if (pUI->isRight())
-      pSimulator->a.add(.1);  // rotate lander right
-   if (pUI->isLeft())
-      pSimulator->a.add(-.1); // rotate lander left
-
-   // increment the phase to make the star twinkle
-   pSimulator->phase++;
+   // Handle user input
+   pSimulator->handleInput(pUI);
 }
 
 /*********************************
- * Main is pretty sparse.  Just initialize
- * my LM type and call the display engine.
- * That is all!
+ * Main Function
  *********************************/
 #ifdef _WIN32
 #include <windows.h>
@@ -91,23 +96,22 @@ int WINAPI WinMain(
    _In_opt_ HINSTANCE hPrevInstance,
    _In_ LPSTR pCmdLine,
    _In_ int nCmdShow)
-#else // !_WIN32
+#else
 int main(int argc, char** argv)
-#endif // !_WIN32
+#endif
 {
-   // Run the unit tests
+   // Run unit tests
    testRunner();
 
-   
    // Initialize OpenGL
    Position posUpperRight(400, 400);
    Interface ui("Lunar Lander", posUpperRight);
 
-   // Initialize the game class
+   // Initialize the simulator
    Simulator simulator(posUpperRight);
 
-   // set everything into action
-   ui.run(callBack, (void *)&simulator);
+   // Run the game loop
+   ui.run(callBack, static_cast<void*>(&simulator));
 
    return 0;
 }

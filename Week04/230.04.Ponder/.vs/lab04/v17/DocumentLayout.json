@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\Week04\\230.04.Ponder\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab04.vcxproj|C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\Week04\\230.04.Ponder\\simulator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab04.vcxproj|solutionrelative:simulator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab04.vcxproj|C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\Week04\\230.04.Ponder\\velocity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab04.vcxproj|solutionrelative:velocity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -31,19 +27,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "simulator.cpp",
-              "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\Week04\\230.04.Ponder\\simulator.cpp",
-              "RelativeDocumentMoniker": "simulator.cpp",
-              "ToolTip": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\Week04\\230.04.Ponder\\simulator.cpp",
-              "RelativeToolTip": "simulator.cpp",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAiwFsAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-31T03:27:51.026Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "velocity.h",
               "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\Week04\\230.04.Ponder\\velocity.h",
               "RelativeDocumentMoniker": "velocity.h",
@@ -56,7 +39,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "position.cpp",
               "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\Week04\\230.04.Ponder\\position.cpp",
               "RelativeDocumentMoniker": "position.cpp",
@@ -64,12 +47,11 @@
               "RelativeToolTip": "position.cpp",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABgAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-31T03:13:29.037Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-31T03:13:29.037Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "position.h",
               "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\Week04\\230.04.Ponder\\position.h",
               "RelativeDocumentMoniker": "position.h",
@@ -77,8 +59,7 @@
               "RelativeToolTip": "position.h",
               "ViewState": "AgIAABIAAAAAAAAAAAAAACEAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-31T03:13:27.831Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-31T03:13:27.831Z"
             }
           ]
         }
