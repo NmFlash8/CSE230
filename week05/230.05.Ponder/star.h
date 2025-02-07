@@ -8,15 +8,35 @@
  ************************************************************************/
 
 #pragma once
-#include "position.h"   // for POSITION
-#include "uiDraw.h"     // for RANDOM and DRAWSTAR
+#include "position.h"   // for Position
+#include "uiDraw.h"     // for DRAWSTAR and RANDOM
 
-/*****************************************************
- * STAR
- * A star that twinkles
- *****************************************************/
+ /*****************************************************
+  * STAR
+  * A star that twinkles
+  *****************************************************/
 class Star
 {
 public:
+   // Constructors
+   Star() : pos(0, 0), phase(0) {}
+   Star(double x, double y) : pos(x, y), phase(0) {}
 
+   // Reset the star position randomly within given width/height
+   void reset(double width, double height)
+   {
+      pos.setX(random(0.0, width));
+      pos.setY(random(0.0, height));
+      phase = random(0, 255);  // Randomize the phase
+   }
+
+   // Draw the star
+   void draw(ogstream& gout) const
+   {
+      gout.drawStar(pos, phase);
+   }
+
+private:
+   Position pos;
+   unsigned char phase;
 };
