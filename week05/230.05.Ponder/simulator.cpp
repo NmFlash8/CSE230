@@ -4,9 +4,7 @@
  **********************************************************************/
 
 #include "position.h"    // everything should have a point
-#include "acceleration.h"// for ACCELERATION
-#include "lander.h"      // for LANDER
-#include "star.h"        // for STAR
+#include "angle.h"       // angle of the lander
 #include "uiInteract.h"  // for INTERFACE
 #include "uiDraw.h"      // for RANDOM and DRAW*
 #include "ground.h"      // for GROUND
@@ -16,18 +14,62 @@
 using namespace std;
 
 
-/*************************************************************************
+/****************************************
  * SIMULATOR
  * Everything pertaining to the simulator.
- *************************************************************************/
+ ****************************************/
 class Simulator
 {
 public:
-   Simulator(const Position & posUpperRight) : ground(posUpperRight) {}
+   // Constructor
+   Simulator(const Position& posUpperRight);
+
+   // Display function
+   void display();
+
+   // Handle user input
+   void handleInput(const Interface* pUI);
+
+private:
+   Angle a;
    Ground ground;
+   Position posLander;
+   Position posStar;
+   int phase;
 };
 
+// Constructor Implementation
+Simulator::Simulator(const Position& posUpperRight)
+   : ground(posUpperRight),
+   posLander(posUpperRight.getX() / 2, posUpperRight.getY() / 2),
+   posStar(200, 300),
+   phase(2) {}
 
+/******************************
+ * SIMULATOR DISPLAY
+ * Places objects on the screen
+ ******************************/
+void Simulator::display()
+{
+   ogstream gout;
+   ground.draw(gout);
+   gout.drawLander(posLander, a.getRadians());
+   gout.drawStar(posStar, phase);
+}
+
+/***********************************
+ * SIMULATOR HANDLE INPUT
+ * moves objects based on user input
+ ***********************************/
+void Simulator::handleInput(const Interface* pUI)
+{
+   if (pUI->isRight())
+      a.add(-0.1);  // Rotate right
+   if (pUI->isLeft())
+      a.add(0.1);   // Rotate left
+
+   phase++; // Update star twinkling phase
+}
 
 /*************************************
  * CALLBACK
@@ -35,20 +77,17 @@ public:
  **************************************/
 void callBack(const Interface* pUI, void* p)
 {
-   // the first step is to cast the void pointer into a game object. This
-   // is the first step of every single callback function in OpenGL. 
-   Simulator * pSimulator = (Simulator *)p;
+   Simulator* pSimulator = static_cast<Simulator*>(p);
 
-   ogstream gout;
+   // Draw the game
+   pSimulator->display();
 
-   // draw the ground
-   pSimulator->ground.draw(gout);
+   // Handle user input
+   pSimulator->handleInput(pUI);
 }
 
 /*********************************
- * Main is pretty sparse.  Just initialize
- * my LM type and call the display engine.
- * That is all!
+ * Main Function
  *********************************/
 #ifdef _WIN32
 #include <windows.h>
@@ -57,23 +96,22 @@ int WINAPI WinMain(
    _In_opt_ HINSTANCE hPrevInstance,
    _In_ LPSTR pCmdLine,
    _In_ int nCmdShow)
-#else // !_WIN32
+#else
 int main(int argc, char** argv)
-#endif // !_WIN32
+#endif
 {
-   // Run the unit tests
+   // Run unit tests
    testRunner();
 
-   
    // Initialize OpenGL
    Position posUpperRight(400, 400);
    Interface ui("Lunar Lander", posUpperRight);
 
-   // Initialize the game class
+   // Initialize the simulator
    Simulator simulator(posUpperRight);
 
-   // set everything into action
-   ui.run(callBack, (void *)&simulator);
+   // Run the game loop
+   ui.run(callBack, static_cast<void*>(&simulator));
 
    return 0;
 }

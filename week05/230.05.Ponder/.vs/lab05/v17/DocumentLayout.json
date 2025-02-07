@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\simulator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:simulator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "simulator.cpp",
+              "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\simulator.cpp",
+              "RelativeDocumentMoniker": "simulator.cpp",
+              "ToolTip": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\simulator.cpp",
+              "RelativeToolTip": "simulator.cpp",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACkAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-07T02:39:15.297Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
