@@ -19,7 +19,7 @@ class Star
 {
 public:
    // Constructors
-   Star() : pos(0, 0), phase(0) {}
+   Star()                   : pos(0, 0), phase(0) {}
    Star(double x, double y) : pos(x, y), phase(0) {}
 
    // Reset the star position randomly within given width/height
