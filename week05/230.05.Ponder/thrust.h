@@ -30,19 +30,17 @@ public:
    // Get rotation in radians per second
    double rotation() const
    {
-      if (clockwise)
-         return -0.1; // Clockwise rotation
-      if (counterClockwise)
-         return 0.1;  // Counterclockwise rotation
-      return 0.0;      // No rotation
+      if (clockwise && !counterClockwise)
+         return 0.1;
+      else if (!clockwise && counterClockwise)
+         return -0.1;
+      return 0.0;
    }
 
    // Get main engine thrust in m / s^2
    double mainEngineThrust() const
    {
-      if (mainEngine)
-         return 45000.0 / 15103.0; // Force / Mass
-      return 0.0;
+      return mainEngine ? 45000.0 / 15103.0 : 0.0;
    }
 
    // Reflect what is firing
@@ -50,12 +48,14 @@ public:
    bool isClock()   const { return clockwise; }
    bool isCounter() const { return counterClockwise; }
 
-   // Set the thrusters based on user input
+   // Set the thrusters
    void set(const Interface* pUI)
    {
       mainEngine = pUI->isDown();
-      clockwise = pUI->isRight();
-      counterClockwise = pUI->isLeft();
+
+      // Allow both to be true if both keys are pressed
+      counterClockwise = pUI->isRight();
+      clockwise = pUI->isLeft();
    }
 
 private:
@@ -63,3 +63,4 @@ private:
    bool clockwise;
    bool counterClockwise;
 };
+
