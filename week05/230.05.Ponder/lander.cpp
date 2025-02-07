@@ -41,7 +41,18 @@ Acceleration Lander :: input(const Thrust& thrust, double gravity)
  * COAST
  * What happens when we coast?
  *******************************************************************/
-void Lander :: coast(Acceleration & acceleration, double time)
+void Lander::coast(Acceleration& acceleration, double time)
 {
-   pos.setX(-99.9);
+   if (time > 0)
+   {
+      // Update velocity with acceleration
+      velocity.addDX(acceleration.getDDX() * time);
+      velocity.addDY(acceleration.getDDY() * time);
+
+      // Update position with velocity
+      pos.addX(velocity.getDX() * time);
+      pos.addY(velocity.getDY() * time);
+   }
 }
+
+
