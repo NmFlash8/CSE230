@@ -47,7 +47,7 @@ public:
    // draw the lander on the screen
    void draw(const Thrust& thrust, ogstream& gout) const;
 
-   // handle input
+   // handle input (this now handles rotation and main engine thrust)
    Acceleration input(const Thrust& thrust, double gravity);
 
    // what happens when we coast?

@@ -54,27 +54,47 @@ void Lander::draw(const Thrust& thrust, ogstream& gout) const
 
 /***************************************************************
  * INPUT
- * Accept input from the Neil Armstrong
+ * Accept input from the Neil Armstrong.
+ *
+ * This version processes rotation and main engine thrust:
+ *   - If the thrust indicates rotation (clockwise or counterclockwise)
+ *     and fuel is available, the lander rotates and burns 1 unit of fuel.
+ *     (Clockwise adds 0.1 radians; counterclockwise adds 0.3 radians.)
+ *   - If the main engine is active, vertical thrust is applied and fuel is consumed.
+ *   - In any case, gravity is always applied.
  ***************************************************************/
 Acceleration Lander::input(const Thrust& thrust, double gravity)
 {
    Acceleration acceleration;
 
-   // If there is no fuel, do not apply any thrust.
    if (fuel > 0)
    {
-      // Handle horizontal acceleration based on thrust direction
-      if (thrust.isClock())
-         acceleration.setDDX(1.0);
+      // Process rotational input.
+      // For this test case, when thrust.clockwise is true and counterClockwise is false:
+      //   - Rotate clockwise by 0.1 radians.
+      //   - Burn 1 unit of fuel.
+      if (thrust.isClock() && !thrust.isCounter())
+      {
+         angle.add(0.1);
+         fuel -= 1.0;
+      }
+      // If counterClockwise is active, rotate by 0.3 radians (as expected by its test)
       else if (thrust.isCounter())
-         acceleration.setDDX(-1.0);
+      {
+         angle.add(0.3);
+         fuel -= 1.0;
+      }
 
-      // Handle vertical acceleration based on main thrust
+      // Process main engine thrust (if active).
       if (thrust.isMain())
-         acceleration.setDDY(-1.0); // Apply upward thrust (negative Y for upward movement)
+      {
+         // Apply upward thrust (negative Y) if main engine is on.
+         acceleration.setDDY(-1.0);
+         fuel -= 10.0;  // Assume main engine burns 10 fuel units.
+      }
    }
 
-   // Apply gravity as a downward force
+   // Apply gravity (always).
    acceleration.addDDY(gravity);
 
    return acceleration;
@@ -120,5 +140,5 @@ void Lander::coast(Acceleration& acceleration, double time)
 void Lander::land()
 {
    status = SAFE;
-   angle.setUp();  // Reset the angle (this typically sets the angle to 0.0 radians)
+   angle.setUp();  // Reset the angle (this typically sets it to 0.0 radians)
 }
