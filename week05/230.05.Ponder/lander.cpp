@@ -65,40 +65,46 @@ void Lander::draw(const Thrust& thrust, ogstream& gout) const
  ***************************************************************/
 Acceleration Lander::input(const Thrust& thrust, double gravity)
 {
-   Acceleration acceleration;
+   Acceleration acceleration; // starts with 0,0
 
    if (fuel > 0)
    {
-      // Process rotational input.
-      // For this test case, when thrust.clockwise is true and counterClockwise is false:
-      //   - Rotate clockwise by 0.1 radians.
-      //   - Burn 1 unit of fuel.
+      // Process rotation.
+      // If the clockwise button is pressed (and not counterclockwise),
+      // rotate clockwise by adding 0.1 radians.
       if (thrust.isClock() && !thrust.isCounter())
       {
          angle.add(0.1);
          fuel -= 1.0;
       }
-      // If counterClockwise is active, rotate by 0.3 radians (as expected by its test)
+      // If the counterclockwise button is pressed,
+      // rotate counterclockwise by subtracting 0.1 radians.
       else if (thrust.isCounter())
       {
-         angle.add(0.3);
+         angle.add(-0.1);
          fuel -= 1.0;
       }
 
-      // Process main engine thrust (if active).
+      // Process main engine thrust.
       if (thrust.isMain())
       {
-         // Apply upward thrust (negative Y) if main engine is on.
-         acceleration.setDDY(-1.0);
-         fuel -= 10.0;  // Assume main engine burns 10 fuel units.
+         // Calculate the main engine thrust vector.
+         // For example, when the lander's angle is 4.71239 radians,
+         // sin(4.71239) is about -1 and cos(4.71239) is about 0.
+         // This produces an acceleration of roughly 2.9795404 in the x-direction.
+         const double MAIN_THRUST = 2.9795404;
+         acceleration.setDDX(-MAIN_THRUST * sin(angle.getRadians()));
+         acceleration.setDDY(MAIN_THRUST * cos(angle.getRadians()));
+         fuel -= 10.0;
       }
    }
 
-   // Apply gravity (always).
+   // Gravity is always applied.
    acceleration.addDDY(gravity);
 
    return acceleration;
 }
+
 
 /***************************************************************
  * CRASH
@@ -107,7 +113,7 @@ Acceleration Lander::input(const Thrust& thrust, double gravity)
 void Lander::crash()
 {
    status = DEAD;
-   angle.setRadians(M_PI);  // Set the angle to Pi radians for a crashed (upside down) lander
+   angle.setRadians(M_PI);
 }
 
 /***************************************************************
@@ -140,5 +146,5 @@ void Lander::coast(Acceleration& acceleration, double time)
 void Lander::land()
 {
    status = SAFE;
-   angle.setUp();  // Reset the angle (this typically sets it to 0.0 radians)
+   angle.setUp();  // Reset the angle 
 }
