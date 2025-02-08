@@ -60,17 +60,20 @@ Acceleration Lander::input(const Thrust& thrust, double gravity)
 {
    Acceleration acceleration;
 
-   // Handle horizontal acceleration based on thrust direction
-   if (thrust.isClock()) {
-      acceleration.setDDX(1.0); // Apply thrust to the right (positive X)
-   }
-   else if (thrust.isCounter()) {
-      acceleration.setDDX(-1.0); // Apply thrust to the left (negative X)
-   }
+   // If there is no fuel, do not apply any thrust.
+   if (fuel > 0) {
+      // Handle horizontal acceleration based on thrust direction
+      if (thrust.isClock()) {
+         acceleration.setDDX(1.0); // Apply thrust to the right (positive X)
+      }
+      else if (thrust.isCounter()) {
+         acceleration.setDDX(-1.0); // Apply thrust to the left (negative X)
+      }
 
-   // Handle vertical acceleration based on main thrust
-   if (thrust.isMain()) {
-      acceleration.setDDY(-1.0); // Apply upward thrust (negative Y for upward movement)
+      // Handle vertical acceleration based on main thrust
+      if (thrust.isMain()) {
+         acceleration.setDDY(-1.0); // Apply upward thrust (negative Y for upward movement)
+      }
    }
 
    // Apply gravity as a downward force
@@ -78,6 +81,7 @@ Acceleration Lander::input(const Thrust& thrust, double gravity)
 
    return acceleration;
 }
+
 
 
 /******************************************************************

@@ -1,30 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\",
+  "WorkspaceRootPath": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\lander.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:lander.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\acceleration.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:acceleration.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\lander.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\lander.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:lander.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\uiDraw.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:uiDraw.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\uiInteract.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:uiInteract.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\thrust.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:thrust.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\simulator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:simulator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\lander.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:lander.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,84 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "uiInteract.h",
-              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\uiInteract.h",
-              "RelativeDocumentMoniker": "uiInteract.h",
-              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\uiInteract.h",
-              "RelativeToolTip": "uiInteract.h",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "acceleration.h",
+              "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\acceleration.h",
+              "RelativeDocumentMoniker": "acceleration.h",
+              "ToolTip": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\acceleration.h",
+              "RelativeToolTip": "acceleration.h",
+              "ViewState": "AgIAABIAAAAAAAAAAAAiwB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-08T21:09:36.705Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "uiDraw.h",
-              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\uiDraw.h",
-              "RelativeDocumentMoniker": "uiDraw.h",
-              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\uiDraw.h",
-              "RelativeToolTip": "uiDraw.h",
-              "ViewState": "AgIAACwAAAAAAAAAAAAgwEEAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-08T21:09:23.93Z",
+              "WhenOpened": "2025-02-08T21:39:14.211Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "lander.cpp",
-              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\lander.cpp",
+              "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\lander.cpp",
               "RelativeDocumentMoniker": "lander.cpp",
-              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\lander.cpp",
+              "ToolTip": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\lander.cpp",
               "RelativeToolTip": "lander.cpp",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACsAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAAiwD8AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-07T03:08:46.069Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "lander.h",
-              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\lander.h",
+              "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\lander.h",
               "RelativeDocumentMoniker": "lander.h",
-              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\lander.h",
+              "ToolTip": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\lander.h",
               "RelativeToolTip": "lander.h",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwCEAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAAiwBoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-07T03:08:06.653Z",
+              "WhenOpened": "2025-02-08T21:36:06.626Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "thrust.h",
-              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\thrust.h",
-              "RelativeDocumentMoniker": "thrust.h",
-              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\thrust.h",
-              "RelativeToolTip": "thrust.h",
-              "ViewState": "AgIAABgAAAAAAAAAAAAQwDAAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-07T02:45:12.049Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "simulator.cpp",
-              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\simulator.cpp",
-              "RelativeDocumentMoniker": "simulator.cpp",
-              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\BYUI\\Winter Semester 2025\\Encapsulation Design\\week05\\CSE230\\CSE230\\week05\\230.05.Ponder\\simulator.cpp",
-              "RelativeToolTip": "simulator.cpp",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACkAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-02-07T02:39:15.297Z"
             }
           ]
         }
