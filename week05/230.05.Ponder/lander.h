@@ -57,7 +57,7 @@ public:
    void Lander::land() { status = SAFE; }
 
    // we are dead. Draw the lander upside down
-   void Lander::crash() { status = DEAD; }
+   void Lander::crash();
 
 private:
    Status   status;      // are we dead or not?

@@ -1,4 +1,4 @@
-/***********************************************************************
+﻿/***********************************************************************
  * Source File:
  *    LANDER
  * Author:
@@ -82,6 +82,13 @@ Acceleration Lander::input(const Thrust& thrust, double gravity)
    return acceleration;
 }
 
+/*
+*/
+void Lander::crash()
+{
+   status = DEAD;
+   angle.setRadians(M_PI);  // Update the angle to π radians for a crashed (upside down) lander
+}
 
 
 /******************************************************************
