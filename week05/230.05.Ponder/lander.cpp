@@ -9,7 +9,7 @@
 
 #include "lander.h"
 #include "acceleration.h"
-
+#include <cmath>  // for M_PI if needed
 
  /***************************************************************
   * RESET
@@ -26,7 +26,7 @@ void Lander::reset(const Position& posUpperRight)
    // Fill the fuel with 5000.0 units
    fuel = 5000.0;
 
-   // Set the horizontal velocity to a random value between -4m/s and -10m/s
+   // Set the horizontal velocity to a random value between -10m/s and -4m/s
    velocity.setDX(random(-10.0, -4.0));
 
    // Set the vertical velocity to a random value between -2m/s and 2m/s
@@ -61,40 +61,39 @@ Acceleration Lander::input(const Thrust& thrust, double gravity)
    Acceleration acceleration;
 
    // If there is no fuel, do not apply any thrust.
-   if (fuel > 0) {
+   if (fuel > 0)
+   {
       // Handle horizontal acceleration based on thrust direction
-      if (thrust.isClock()) {
-         acceleration.setDDX(1.0); 
-      }
-      else if (thrust.isCounter()) {
-         acceleration.setDDX(-1.0); 
-      }
+      if (thrust.isClock())
+         acceleration.setDDX(1.0);
+      else if (thrust.isCounter())
+         acceleration.setDDX(-1.0);
 
       // Handle vertical acceleration based on main thrust
-      if (thrust.isMain()) {
+      if (thrust.isMain())
          acceleration.setDDY(-1.0); // Apply upward thrust (negative Y for upward movement)
-      }
    }
 
    // Apply gravity as a downward force
-   acceleration.addDDY(gravity); 
+   acceleration.addDDY(gravity);
 
    return acceleration;
 }
 
-/*
-*/
+/***************************************************************
+ * CRASH
+ * Set the lander to a crashed state.
+ ***************************************************************/
 void Lander::crash()
 {
    status = DEAD;
-   angle.setRadians(M_PI);  // Update the angle to π radians for a crashed (upside down) lander
+   angle.setRadians(M_PI);  // Set the angle to Pi radians for a crashed (upside down) lander
 }
 
-
-/******************************************************************
+/***************************************************************
  * COAST
  * What happens when we coast?
- *******************************************************************/
+ ***************************************************************/
 void Lander::coast(Acceleration& acceleration, double time)
 {
    if (time > 0)
@@ -112,4 +111,14 @@ void Lander::coast(Acceleration& acceleration, double time)
       velocity.addDX(acceleration.getDDX() * time);
       velocity.addDY(acceleration.getDDY() * time);
    }
+}
+
+/***************************************************************
+ * LAND
+ * Straighten the lander and put it on the ground.
+ ***************************************************************/
+void Lander::land()
+{
+   status = SAFE;
+   angle.setUp();  // Reset the angle (this typically sets the angle to 0.0 radians)
 }

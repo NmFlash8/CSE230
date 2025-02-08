@@ -35,14 +35,14 @@ public:
    void reset(const Position& posUpperRight);
 
    // get the status of the lander
-   bool     isDead()         const { return status == DEAD;          }
-   bool     isLanded()       const { return status == SAFE;          }
-   bool     isFlying()       const { return status == PLAYING;       }
-   Position getPosition()    const { return pos;                     }
-   double   getSpeed()       const { return velocity.getSpeed();     }
-   int      getFuel()        const { return static_cast<int>(fuel);  }
-   int      getWidth()       const { return 20;                      }
-   double   getMaxSpeed()    const { return 4.0;                     }
+   bool     isDead()         const { return status == DEAD; }
+   bool     isLanded()       const { return status == SAFE; }
+   bool     isFlying()       const { return status == PLAYING; }
+   Position getPosition()    const { return pos; }
+   double   getSpeed()       const { return velocity.getSpeed(); }
+   int      getFuel()        const { return static_cast<int>(fuel); }
+   int      getWidth()       const { return 20; }
+   double   getMaxSpeed()    const { return 4.0; }
 
    // draw the lander on the screen
    void draw(const Thrust& thrust, ogstream& gout) const;
@@ -54,10 +54,10 @@ public:
    void coast(Acceleration& acceleration, double time);
 
    // straighten the lander and put it on the ground
-   void Lander::land() { status = SAFE; }
+   void land();
 
    // we are dead. Draw the lander upside down
-   void Lander::crash();
+   void crash();
 
 private:
    Status   status;      // are we dead or not?
