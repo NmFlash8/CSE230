@@ -11,13 +11,12 @@
 #include "test.h"        // for the unit tests
 #include <cmath>         // for SQRT
 #include <cassert>       // for ASSERT
+#include <vector>        // for storing multiple stars
+#include <cstdlib>       // for rand()
+#include <ctime>         // for seeding random numbers
 using namespace std;
 
 
-/****************************************
- * SIMULATOR
- * Everything pertaining to the simulator.
- ****************************************/
 class Simulator
 {
 public:
@@ -34,16 +33,48 @@ private:
    Angle a;
    Ground ground;
    Position posLander;
-   Position posStar;
-   int phase;
+   std::vector<Position> stars; // Stores 50 star positions
+   std::vector<int> phases;     // Stores twinkling phases
 };
 
 // Constructor Implementation
 Simulator::Simulator(const Position& posUpperRight)
    : ground(posUpperRight),
-   posLander(posUpperRight.getX() / 2, posUpperRight.getY() / 2),
-   posStar(200, 300),
-   phase(2) {}
+   posLander(posUpperRight.getX() / 2, posUpperRight.getY() / 2)
+{
+   srand(static_cast<unsigned>(time(0))); // Seed random number generator
+
+   // Generate 50 stars with random positions and phases
+   for (int i = 0; i < 50; i++)
+   {
+      // Generate a random x-coordinate within the screen width.
+      int x = rand() % static_cast<int>(posUpperRight.getX());
+
+      // Create a temporary Position to get the ground elevation at this x coordinate.
+      Position posForElevation;
+      posForElevation.setX(static_cast<double>(x));
+      // The y value is not important here if ground.getElevation() uses only x.
+      posForElevation.setY(0.0);
+
+      // Get the elevation at the given x coordinate.
+      double elev = ground.getElevation(posForElevation);
+
+      int y;
+      // Generate a y-coordinate until it is at least 10 pixels above the ground.
+      do {
+         y = rand() % static_cast<int>(posUpperRight.getY());
+      } while (y <= static_cast<int>(elev) + 10);
+
+      // Create a star Position using the default constructor and setters.
+      Position star;
+      star.setX(static_cast<double>(x));
+      star.setY(static_cast<double>(y));
+      stars.push_back(star);
+
+      // Assign a random phase (0 to 255) for the star's twinkling.
+      phases.push_back(rand() % 256);
+   }
+}
 
 /******************************
  * SIMULATOR DISPLAY
@@ -51,10 +82,16 @@ Simulator::Simulator(const Position& posUpperRight)
  ******************************/
 void Simulator::display()
 {
+
    ogstream gout;
    ground.draw(gout);
    gout.drawLander(posLander, a.getRadians());
-   gout.drawStar(posStar, phase);
+
+   // Draw all stars
+   for (size_t i = 0; i < stars.size(); i++)
+   {
+      gout.drawStar(stars[i], phases[i]);
+   }
 }
 
 /***********************************
@@ -68,7 +105,11 @@ void Simulator::handleInput(const Interface* pUI)
    if (pUI->isLeft())
       a.add(0.1);   // Rotate left
 
-   phase++; // Update star twinkling phase
+   // Update twinkling phase of each star randomly
+   for (size_t i = 0; i < phases.size(); i++)
+   {
+      phases[i] = (phases[i] + rand() % 5) % 256; // Small random change in phase
+   }
 }
 
 /*************************************
