@@ -54,10 +54,10 @@ public:
    void coast(Acceleration& acceleration, double time);
 
    // straighten the lander and put it on the ground
-   void land() { status = SAFE; }
+   void Lander::land() { status = SAFE; }
 
    // we are dead. Draw the lander upside down
-   void crash() { status = DEAD; }
+   void Lander::crash() { status = DEAD; }
 
 private:
    Status   status;      // are we dead or not?

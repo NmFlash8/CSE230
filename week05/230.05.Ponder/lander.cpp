@@ -14,7 +14,7 @@
   * RESET
   * Reset the lander and its position to start the game over
   ***************************************************************/
-void Lander :: reset(const Position & posUpperRight)
+void Lander::reset(const Position& posUpperRight)
 {
    status = DEAD;
 }
@@ -23,7 +23,7 @@ void Lander :: reset(const Position & posUpperRight)
  * DRAW
  * Draw the lander on the screen
  ***************************************************************/
-void Lander :: draw(const Thrust & thrust, ogstream & gout) const
+void Lander::draw(const Thrust& thrust, ogstream& gout) const
 {
 }
 
@@ -31,7 +31,7 @@ void Lander :: draw(const Thrust & thrust, ogstream & gout) const
  * INPUT
  * Accept input from the Neil Armstrong
  ***************************************************************/
-Acceleration Lander :: input(const Thrust& thrust, double gravity)
+Acceleration Lander::input(const Thrust& thrust, double gravity)
 {
    pos.setX(-99.9);
    return Acceleration();
@@ -54,5 +54,3 @@ void Lander::coast(Acceleration& acceleration, double time)
       pos.addY(velocity.getDY() * time);
    }
 }
-
-
