@@ -92,12 +92,17 @@ void Lander::coast(Acceleration& acceleration, double time)
 {
    if (time > 0)
    {
-      // Update velocity with acceleration
+      // Save the current (initial) velocities
+      double oldDX = velocity.getDX();
+      double oldDY = velocity.getDY();
+
+      // Update the position using the constant acceleration formula:
+      // new position = old position + (old velocity * time) + (0.5 * acceleration * time^2)
+      pos.addX(oldDX * time + 0.5 * acceleration.getDDX() * time * time);
+      pos.addY(oldDY * time + 0.5 * acceleration.getDDY() * time * time);
+
+      // Update velocity: new velocity = old velocity + (acceleration * time)
       velocity.addDX(acceleration.getDDX() * time);
       velocity.addDY(acceleration.getDDY() * time);
-
-      // Update position with velocity
-      pos.addX(velocity.getDX() * time);
-      pos.addY(velocity.getDY() * time);
    }
 }
