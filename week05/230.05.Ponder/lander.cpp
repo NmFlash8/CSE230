@@ -107,16 +107,6 @@ Acceleration Lander::input(const Thrust& thrust, double gravity)
 
 
 /***************************************************************
- * CRASH
- * Set the lander to a crashed state.
- ***************************************************************/
-void Lander::crash()
-{
-   status = DEAD;
-   angle.setRadians(M_PI);
-}
-
-/***************************************************************
  * COAST
  * What happens when we coast?
  ***************************************************************/
@@ -147,4 +137,15 @@ void Lander::land()
 {
    status = SAFE;
    angle.setUp();  // Reset the angle 
+}
+
+
+/***************************************************************
+ * CRASH
+ * Set the lander to a crashed state.
+ ***************************************************************/
+void Lander::crash()
+{
+   status = DEAD;
+   angle.setRadians(M_PI);
 }
