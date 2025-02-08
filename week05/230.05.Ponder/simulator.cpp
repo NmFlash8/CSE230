@@ -47,31 +47,19 @@ Simulator::Simulator(const Position& posUpperRight)
    // Generate 50 stars with random positions and phases
    for (int i = 0; i < 50; i++)
    {
-      // Generate a random x-coordinate within the screen width.
+      // Random x-coordinate within screen width
       int x = rand() % static_cast<int>(posUpperRight.getX());
 
-      // Create a temporary Position to get the ground elevation at this x coordinate.
-      Position posForElevation;
-      posForElevation.setX(static_cast<double>(x));
-      // The y value is not important here if ground.getElevation() uses only x.
-      posForElevation.setY(0.0);
-
-      // Get the elevation at the given x coordinate.
-      double elev = ground.getElevation(posForElevation);
-
+      // Random y-coordinate that is at least 10 pixels above the ground
       int y;
-      // Generate a y-coordinate until it is at least 10 pixels above the ground.
       do {
          y = rand() % static_cast<int>(posUpperRight.getY());
-      } while (y <= static_cast<int>(elev) + 10);
+      } while (y <= ground.getElevation(Position(x, 0)) + 10);
 
-      // Create a star Position using the default constructor and setters.
-      Position star;
-      star.setX(static_cast<double>(x));
-      star.setY(static_cast<double>(y));
-      stars.push_back(star);
+      // Create a star Position and add it to the stars vector
+      stars.push_back(Position(x, y));
 
-      // Assign a random phase (0 to 255) for the star's twinkling.
+      // Assign a random phase (0 to 255) for the star's twinkling
       phases.push_back(rand() % 256);
    }
 }
@@ -84,14 +72,14 @@ void Simulator::display()
 {
 
    ogstream gout;
-   ground.draw(gout);
-   gout.drawLander(posLander, a.getRadians());
-
    // Draw all stars
    for (size_t i = 0; i < stars.size(); i++)
    {
       gout.drawStar(stars[i], phases[i]);
    }
+   ground.draw(gout);
+   gout.drawLander(posLander, a.getRadians());
+
 }
 
 /***********************************
