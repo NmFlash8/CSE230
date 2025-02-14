@@ -127,7 +127,7 @@ void callBack(const Interface* pUI, void* p)
    Acceleration acceleration = pSimulator->lander.input(pSimulator->thrust, -1);
 
    // Update lander position
-   pSimulator->lander.coast(acceleration, .2);
+   pSimulator->lander.coast(acceleration, 1.0 / 30.0);
 
    // Handle user input
    pSimulator->handleInput(pUI);
