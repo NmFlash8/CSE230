@@ -9,6 +9,8 @@
 #include "uiDraw.h"      // for RANDOM and DRAW*
 #include "ground.h"      // for GROUND
 #include "test.h"        // for the unit tests
+#include "lander.h"      //
+#include "star.h"        //
 #include <cmath>         // for SQRT
 #include <cassert>       // for ASSERT
 #include <vector>        // for storing multiple stars
@@ -32,6 +34,8 @@ public:
 private:
    Angle a;
    Ground ground;
+   Lander lander;
+   Star star;
    Position posLander;
    std::vector<Position> stars; // Stores 50 star positions
    std::vector<int> phases;     // Stores twinkling phases
@@ -42,19 +46,13 @@ Simulator::Simulator(const Position& posUpperRight)
    : ground(posUpperRight),
    posLander(posUpperRight.getX() / 2, posUpperRight.getY() / 2)
 {
-   srand(static_cast<unsigned>(time(0))); // Seed random number generator
+   srand(static_cast<unsigned>(time(0))); // Random Number
 
    // Generate 50 stars with random positions and phases
    for (int i = 0; i < 50; i++)
    {
-      // Random x-coordinate within screen width
       int x = rand() % static_cast<int>(posUpperRight.getX());
-
-      // Random y-coordinate that is at least 10 pixels above the ground
-      int y;
-      do {
-         y = rand() % static_cast<int>(posUpperRight.getY());
-      } while (y <= ground.getElevation(Position(x, 0)) + 10);
+      int y = rand() % static_cast<int>(posUpperRight.getY());
 
       // Create a star Position and add it to the stars vector
       stars.push_back(Position(x, y));
@@ -96,7 +94,7 @@ void Simulator::handleInput(const Interface* pUI)
    // Update twinkling phase of each star randomly
    for (size_t i = 0; i < phases.size(); i++)
    {
-      phases[i] = (phases[i] + rand() % 5) % 256; // Small random change in phase
+      phases[i]++;
    }
 }
 
