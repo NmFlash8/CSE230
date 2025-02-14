@@ -5,6 +5,7 @@
 
 #include "position.h"    // everything should have a point
 #include "angle.h"       // angle of the lander
+#include "acceleration.h"// acceleration of lander
 #include "uiInteract.h"  // for INTERFACE
 #include "uiDraw.h"      // for RANDOM and DRAW*
 #include "ground.h"      // for GROUND
@@ -30,13 +31,13 @@ public:
 
    // Handle user input
    void handleInput(const Interface* pUI);
+   Thrust thrust; 
+   Lander lander;  
 
 private:
    Angle a;
-   Ground ground;
-   Lander lander;  // We now fully rely on Lander's position
    Star star;
-   Thrust thrust; 
+   Ground ground;
    std::vector<Position> stars; // Stores 50 star positions
    std::vector<int> phases;     // Stores twinkling phases
 };
@@ -45,7 +46,7 @@ private:
 // Constructor Implementation
 Simulator::Simulator(const Position& posUpperRight)
    : ground(posUpperRight),
-   lander(Position(posUpperRight.getX() / 2, posUpperRight.getY() / 2)),
+   lander(Position(posUpperRight.getX() / 2, 300)),
    thrust() 
 {
    srand(static_cast<unsigned>(time(0))); // Random Number
@@ -115,6 +116,8 @@ void callBack(const Interface* pUI, void* p)
 
    // Draw the game
    pSimulator->display();
+
+   pSimulator->lander.input(pSimulator->thrust, 1.62);
 
    // Handle user input
    pSimulator->handleInput(pUI);
