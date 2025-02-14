@@ -34,17 +34,19 @@ public:
 private:
    Angle a;
    Ground ground;
-   Lander lander;
+   Lander lander;  // We now fully rely on Lander's position
    Star star;
-   Position posLander;
+   Thrust thrust; 
    std::vector<Position> stars; // Stores 50 star positions
    std::vector<int> phases;     // Stores twinkling phases
 };
 
+
 // Constructor Implementation
 Simulator::Simulator(const Position& posUpperRight)
    : ground(posUpperRight),
-   posLander(posUpperRight.getX() / 2, posUpperRight.getY() / 2)
+   lander(Position(posUpperRight.getX() / 2, posUpperRight.getY() / 2)),
+   thrust() 
 {
    srand(static_cast<unsigned>(time(0))); // Random Number
 
@@ -62,23 +64,28 @@ Simulator::Simulator(const Position& posUpperRight)
    }
 }
 
+
 /******************************
  * SIMULATOR DISPLAY
  * Places objects on the screen
  ******************************/
 void Simulator::display()
 {
-
    ogstream gout;
+
    // Draw all stars
    for (size_t i = 0; i < stars.size(); i++)
    {
       gout.drawStar(stars[i], phases[i]);
    }
-   ground.draw(gout);
-   gout.drawLander(posLander, a.getRadians());
 
+   // Draw ground
+   ground.draw(gout);
+
+   // Draw lander using its own position
+   lander.draw(thrust, gout);
 }
+
 
 /***********************************
  * SIMULATOR HANDLE INPUT
@@ -86,10 +93,8 @@ void Simulator::display()
  ***********************************/
 void Simulator::handleInput(const Interface* pUI)
 {
-   if (pUI->isRight())
-      a.add(-0.1);  // Rotate right
-   if (pUI->isLeft())
-      a.add(0.1);   // Rotate left
+   // Update thrust states based on user input
+   thrust.set(pUI);
 
    // Update twinkling phase of each star randomly
    for (size_t i = 0; i < phases.size(); i++)
@@ -97,6 +102,8 @@ void Simulator::handleInput(const Interface* pUI)
       phases[i]++;
    }
 }
+
+
 
 /*************************************
  * CALLBACK
