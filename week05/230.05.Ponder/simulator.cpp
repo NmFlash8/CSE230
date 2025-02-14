@@ -17,6 +17,7 @@
 #include <vector>        // for storing multiple stars
 #include <cstdlib>       // for rand()
 #include <ctime>         // for seeding random numbers
+#include <iostream>
 using namespace std;
 
 
@@ -33,7 +34,7 @@ public:
    void handleInput(const Interface* pUI);
    Thrust thrust; 
    Lander lander;  
-
+   Acceleration acceleration;
 private:
    Angle a;
    Star star;
@@ -117,10 +118,17 @@ void callBack(const Interface* pUI, void* p)
    // Draw the game
    pSimulator->display();
 
-   pSimulator->lander.input(pSimulator->thrust, 1.62);
+   Acceleration acceleration = pSimulator->lander.input(pSimulator->thrust, -1);
+   pSimulator->lander.coast(acceleration, .2);
+
+
 
    // Handle user input
    pSimulator->handleInput(pUI);
+
+   cout << "Position: (" << pSimulator->lander.getPosition().getX() << ", "
+      << pSimulator->lander.getPosition().getY() << ")" << endl;
+
 }
 
 /*********************************
