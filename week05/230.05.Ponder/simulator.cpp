@@ -52,6 +52,8 @@ Simulator::Simulator(const Position& posUpperRight)
 {
    srand(static_cast<unsigned>(time(0))); // Random Number
 
+   lander.reset(posUpperRight); // Reset the lander
+
    // Generate 50 stars with random positions and phases
    for (int i = 0; i < 50; i++)
    {
@@ -86,6 +88,10 @@ void Simulator::display()
 
    // Draw lander using its own position
    lander.draw(thrust, gout);
+
+
+   // Draw information last
+   gout << lander.getFuel();
 }
 
 
@@ -106,7 +112,6 @@ void Simulator::handleInput(const Interface* pUI)
 }
 
 
-
 /*************************************
  * CALLBACK
  * Handle one frame of the simulator
@@ -118,10 +123,11 @@ void callBack(const Interface* pUI, void* p)
    // Draw the game
    pSimulator->display();
 
+   // Update lander acceleration 
    Acceleration acceleration = pSimulator->lander.input(pSimulator->thrust, -1);
+
+   // Update lander position
    pSimulator->lander.coast(acceleration, .2);
-
-
 
    // Handle user input
    pSimulator->handleInput(pUI);
