@@ -43,6 +43,7 @@ public:
    int      getFuel()        const { return static_cast<int>(fuel); }
    int      getWidth()       const { return 20; }
    double   getMaxSpeed()    const { return 4.0; }
+   Angle    angle;       // the orientation of the lander
 
    // draw the lander on the screen
    void draw(const Thrust& thrust, ogstream& gout) const;
@@ -63,6 +64,5 @@ private:
    Status   status;      // are we dead or not?
    Position pos;         // the location of the lander
    Velocity velocity;    // the speed of the lander
-   Angle    angle;       // the orientation of the lander
    double   fuel;        // amount of fuel remaining
 };

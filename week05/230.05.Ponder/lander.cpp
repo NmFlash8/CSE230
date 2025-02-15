@@ -46,10 +46,10 @@ void Lander::reset(const Position& posUpperRight)
 void Lander::draw(const Thrust& thrust, ogstream& gout) const
 {
    // Draw the lander at its current position and angle
-   gout.drawLander(pos, angle.getDegrees());
+   gout.drawLander(pos, angle.getRadians());
 
    // Turn on the flames as necessary
-   gout.drawLanderFlames(pos, angle.getDegrees(), thrust.isMain(), thrust.isClock(), thrust.isCounter());
+   gout.drawLanderFlames(pos, angle.getRadians(), thrust.isMain(), thrust.isClock(), thrust.isCounter());
 }
 
 /***************************************************************
@@ -75,7 +75,7 @@ Acceleration Lander::input(const Thrust& thrust, double gravity)
       // rotate clockwise by adding 0.1 radians.
       if (thrust.isClock() && !thrust.isCounter())
       {
-         angle.add(0.0010);
+         angle.add(0.1);
          fuel -= 1.0;
       }
 
@@ -83,7 +83,7 @@ Acceleration Lander::input(const Thrust& thrust, double gravity)
       // rotate counterclockwise by subtracting 0.1 radians.
       else if (thrust.isCounter())
       {
-         angle.add(-0.0010);
+         angle.add(-0.1);
          fuel -= 1.0;
       }
 

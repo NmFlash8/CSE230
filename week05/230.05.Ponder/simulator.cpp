@@ -11,7 +11,7 @@
 #include "ground.h"      // for GROUND
 #include "test.h"        // for the unit tests
 #include "lander.h"      //
-#include "star.h"        //
+#include "star.h"        // Star class to handle twinkling
 #include <cmath>         // for SQRT
 #include <cassert>       // for ASSERT
 #include <vector>        // for storing multiple stars
@@ -32,15 +32,15 @@ public:
 
    // Handle user input
    void handleInput(const Interface* pUI);
-   Thrust thrust; 
-   Lander lander;  
+
+   Thrust thrust;
+   Lander lander;
    Acceleration acceleration;
+
 private:
    Angle a;
-   Star star;
    Ground ground;
-   std::vector<Position> stars; // Stores 50 star positions
-   std::vector<int> phases;     // Stores twinkling phases
+   std::vector<Star> stars; // Stores 50 Star objects
 };
 
 
@@ -48,23 +48,18 @@ private:
 Simulator::Simulator(const Position& posUpperRight)
    : ground(posUpperRight),
    lander(Position(posUpperRight.getX() / 2, 300)),
-   thrust() 
+   thrust()
 {
-   srand(static_cast<unsigned>(time(0))); // Random Number
+   srand(static_cast<unsigned>(time(0))); // Seed the random number generator
 
    lander.reset(posUpperRight); // Reset the lander
 
-   // Generate 50 stars with random positions and phases
+   // Generate 50 stars with random positions and phases using the Star class
    for (int i = 0; i < 50; i++)
    {
-      int x = rand() % static_cast<int>(posUpperRight.getX());
-      int y = rand() % static_cast<int>(posUpperRight.getY());
-
-      // Create a star Position and add it to the stars vector
-      stars.push_back(Position(x, y));
-
-      // Assign a random phase (0 to 255) for the star's twinkling
-      phases.push_back(rand() % 256);
+      Star star;
+      star.reset(posUpperRight.getX(), posUpperRight.getY());
+      stars.push_back(star);
    }
 }
 
@@ -77,10 +72,10 @@ void Simulator::display()
 {
    ogstream gout;
 
-   // Draw all stars
+   // Draw all stars using the Star class's draw method
    for (size_t i = 0; i < stars.size(); i++)
    {
-      gout.drawStar(stars[i], phases[i]);
+      stars[i].draw(gout);
    }
 
    // Draw ground
@@ -89,28 +84,28 @@ void Simulator::display()
    // Draw lander using its own position
    lander.draw(thrust, gout);
 
-
-   // Draw information last;
+   // Draw information last
    gout.setPosition(Position(10, 380));
-   gout << "Fuel: "    << lander.getFuel() << endl
-        << "Speed: "   << lander.getSpeed() << " m/s " << endl
-        << "altitude: "<< ground.getElevation(lander.getPosition()) << endl;
+   gout << "Fuel: "     << lander.getFuel()                          << endl
+        << "Angle: "    << lander.angle.getDegrees()                 << endl
+        << "Speed: "    << lander.getSpeed() << " m/s "              << endl
+        << "Altitude: " << ground.getElevation(lander.getPosition()) << endl;
 }
 
 
 /***********************************
  * SIMULATOR HANDLE INPUT
- * moves objects based on user input
+ * Moves objects based on user input
  ***********************************/
 void Simulator::handleInput(const Interface* pUI)
 {
    // Update thrust states based on user input
    thrust.set(pUI);
 
-   // Update twinkling phase of each star randomly
-   for (size_t i = 0; i < phases.size(); i++)
+   // Update the twinkling phase of each star by calling its twinkle() method
+   for (size_t i = 0; i < stars.size(); i++)
    {
-      phases[i]++;
+      stars[i].twinkle();
    }
 }
 
@@ -126,19 +121,20 @@ void callBack(const Interface* pUI, void* p)
    // Draw the game
    pSimulator->display();
 
-   // Update lander acceleration 
-   Acceleration acceleration = pSimulator->lander.input(pSimulator->thrust, -1); // -1 is suppose to be gravity?
+   // Update lander acceleration (the -1 represents gravity)
+   Acceleration acceleration = pSimulator->lander.input(pSimulator->thrust, -1);
 
    // Update lander position
-   pSimulator->lander.coast(acceleration, .2); // Seems too slow now at 30fps?
+   pSimulator->lander.coast(acceleration, .2);
 
-   // Handle user input
+   // Handle user input (including star twinkling)
    pSimulator->handleInput(pUI);
 
-   //cout << "Position: (" << pSimulator->lander.getPosition().getX() << ", "
-   //   << pSimulator->lander.getPosition().getY() << ")" << endl;
-
+   // Debug output (optional)
+   // cout << "Position: (" << pSimulator->lander.getPosition().getX() << ", "
+   //      << pSimulator->lander.getPosition().getY() << ")" << endl;
 }
+
 
 /*********************************
  * Main Function
@@ -157,7 +153,7 @@ int main(int argc, char** argv)
    // Run unit tests
    testRunner();
 
-   // Initialize OpenGL
+   // Initialize OpenGL window parameters
    Position posUpperRight(400, 400);
    Interface ui("Lunar Lander", posUpperRight);
 
