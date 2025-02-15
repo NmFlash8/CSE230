@@ -86,8 +86,10 @@ void Simulator::display()
 
    // Draw information last
    gout.setPosition(Position(10, 380));
+
    gout << "Fuel: "     << lander.getFuel()                          << endl
-        << "Angle: "    << lander.angle.getDegrees()                 << endl
+      //<< "Angle: "    << lander.angle.getDegrees()                 << endl
+      //<< "Position: ("<< lander.getPosition().getX() << " , " << lander.getPosition().getY() << ")" << endl
         << "Speed: "    << lander.getSpeed() << " m/s "              << endl
         << "Altitude: " << ground.getElevation(lander.getPosition()) << endl;
 }
