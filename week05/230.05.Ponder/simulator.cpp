@@ -91,8 +91,9 @@ void Simulator::display()
 
 
    // Draw information last;
-   gout.setPosition(Position(10, 10));
-   gout << lander.getFuel();
+   gout.setPosition(Position(10, 380));
+   gout << "Fuel: "  << lander.getFuel() << endl
+        << "Speed: " << lander.getSpeed() << endl;
 }
 
 
