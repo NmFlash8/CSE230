@@ -92,6 +92,7 @@ void Simulator::display()
       //<< "Position: ("<< lander.getPosition().getX() << " , " << lander.getPosition().getY() << ")" << endl
         << "Speed: "    << lander.getSpeed() << " m/s "              << endl
         << "Altitude: " << ground.getElevation(lander.getPosition()) << endl;
+
 }
 
 
