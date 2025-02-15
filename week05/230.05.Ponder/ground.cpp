@@ -9,7 +9,9 @@
 
 #include "ground.h"   // for the Ground class definition
 #include "uiDraw.h"   // for random() and drawLine()
+#include "iostream"
 #include <cassert>
+using namespace std;
 
 const long   LZ_SIZE   = 30;    // size of the landing zone
 const double MAX_SLOPE = 2.7;   // steapness of the features. Smaller number is flatter
@@ -105,22 +107,28 @@ bool Ground::hitGround(const Position& pos, int landerWidth) const
  ************************************************************************/
 bool Ground :: onPlatform(const Position & pos, int landerWidth) const
 {
+   //cout << "Elevation: " << getElevation(pos) << " | " << pos.getX() << endl;
    // not on the platform if we are too high
    if (getElevation(pos) > 1.0)
+      //cout << "too high" << endl;
       return false;
 
    // not on the platform if we hit the ground
    if (getElevation(pos) < 0.0)
+      //cout << "too low" << endl;
       return false;
 
    // not on the platform if we are too far left
    if (pos.getX() + landerWidth / 2.0 < (double)iLZ)
+      //cout << "too left" << endl;
       return false;
 
    // not on the platform if we are too far right
    if (pos.getX() - landerWidth / 2.0 > (double)(iLZ + LZ_SIZE))
+      //cout << "too right" << endl;
       return false;
 
+   //cout << "on platform" << endl;
    return true;
 }
 

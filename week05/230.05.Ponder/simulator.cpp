@@ -1,6 +1,7 @@
 /**********************************************************************
  * LAB 06
  * Lunar Lander simulation. This is the Game class and main()
+ * Created by Diego Estrada, and Noah McSheehy
  **********************************************************************/
 
 #include "position.h"    // everything should have a point
@@ -86,16 +87,18 @@ void Simulator::display()
 
    // Draw information last
 
-   // Add status message
+   // isplay status message
    string statusText = "";
-   if (lander.isFlying()) { statusText = "playing..."; }
+   gout.setPosition(Position(200, 300)); // set position to the top middle of the screen
+   if (lander.isFlying()) { statusText = "";      }
    if (lander.isDead())   { statusText = "ouch!"; }
    if (lander.isLanded()) { statusText = "Wow!!"; }
+   gout << statusText;
 
    // Display info panel in top left
    gout.setPosition(Position(10, 380)); // set position Top left
    gout << "Fuel: "     << lander.getFuel()                          << endl
-        << "Status: "   << statusText                                << endl
+      //<< "Status: "   << statusText                                << endl
       //<< "Angle: "    << lander.angle.getDegrees()                 << endl
       //<< "Position: ("<< lander.getPosition().getX() << " , " << lander.getPosition().getY() << ")" << endl
         << "Speed: "    << lander.getSpeed() << " m/s "              << endl
@@ -122,6 +125,47 @@ void Simulator::handleInput(const Interface* pUI)
 
 
 /*************************************
+ * SIMULATOR LOGIC HANDLER
+ * Updates lander state, checks for landing/crashing
+ **************************************/
+void updateSimulatorLogic(Simulator* pSimulator)
+{
+   // Variables needed to check if we are landing or not.
+   Position landerPos = pSimulator->lander.getPosition();
+   double speed = pSimulator->lander.getSpeed();
+
+   // Check if the lander is on the platform and handle landing/crash
+   if (pSimulator->ground.onPlatform(landerPos, pSimulator->lander.getWidth()))
+   {
+      if (speed <= pSimulator->lander.getMaxSpeed())
+      {
+         pSimulator->lander.land();
+         cout << "SUCCESS" << endl;
+      }
+      else
+      {
+         pSimulator->lander.crash();
+         cout << "Crashed on platform" << endl;
+      }
+   }
+   // Check if the lander hit the ground and handle crash
+   else if (pSimulator->ground.hitGround(landerPos, pSimulator->lander.getWidth()))
+   {
+      pSimulator->lander.crash();
+      cout << "Lander hit the ground" << endl;
+   }
+
+   // If the lander is still flying, update its state
+   if (pSimulator->lander.isFlying())
+   {
+      // Update lander acceleration and position
+      Acceleration acceleration = pSimulator->lander.input(pSimulator->thrust, -1);
+      pSimulator->lander.coast(acceleration, .2);
+   }
+}
+
+
+/*************************************
  * CALLBACK
  * Handle one frame of the simulator
  **************************************/
@@ -129,50 +173,15 @@ void callBack(const Interface* pUI, void* p)
 {
    Simulator* pSimulator = static_cast<Simulator*>(p);
 
-   // Draw the game
+   // Draw the simulator
    pSimulator->display();
 
+   // Update simulator logic (landing, crashing, coasting, etc.)
+   updateSimulatorLogic(pSimulator);
 
-   // Variables needed to check if we are landing or not.
-   Position landerPos = pSimulator->lander.getPosition();
-   double altitude = pSimulator->ground.getElevation(landerPos);
-   double speed = pSimulator->lander.getSpeed();
-   cout << altitude << " | " << speed << endl;
-
-   // If the lander reaches the ground
-   if (altitude <= 0)
-   {
-      cout << "LANDING" << endl;
-      // Landing on platform
-      if (pSimulator->ground.onPlatform(landerPos, pSimulator->lander.getWidth())) 
-      {
-         // Safe landing
-         if (speed <= pSimulator->lander.getMaxSpeed())  
-         {
-          pSimulator->lander.land();
-          cout << "SUCCESS" << endl;
-         }
-      }
-      // Crash
-      else  
-      {
-         pSimulator->lander.crash();
-      }
-   }
-   // Keep playing the game
-   else
-   {
-   // Update lander acceleration (the -1 represents gravity)
-   Acceleration acceleration = pSimulator->lander.input(pSimulator->thrust, -1);
-
-   // Update lander position
-   pSimulator->lander.coast(acceleration, .2);
-
-   // Handle user input 
+   // Handle user input for thrust adjustments
    pSimulator->handleInput(pUI);
-   }
 }
-
 
 
 /*********************************
