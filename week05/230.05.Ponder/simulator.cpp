@@ -92,8 +92,9 @@ void Simulator::display()
 
    // Draw information last;
    gout.setPosition(Position(10, 380));
-   gout << "Fuel: "  << lander.getFuel() << endl
-        << "Speed: " << lander.getSpeed() << endl;
+   gout << "Fuel: "    << lander.getFuel() << endl
+        << "Speed: "   << lander.getSpeed() << endl
+        << "altitude: "<< ground.getElevation(lander.getPosition()) << endl;
 }
 
 
@@ -134,8 +135,8 @@ void callBack(const Interface* pUI, void* p)
    // Handle user input
    pSimulator->handleInput(pUI);
 
-   cout << "Position: (" << pSimulator->lander.getPosition().getX() << ", "
-      << pSimulator->lander.getPosition().getY() << ")" << endl;
+   //cout << "Position: (" << pSimulator->lander.getPosition().getX() << ", "
+   //   << pSimulator->lander.getPosition().getY() << ")" << endl;
 
 }
 
