@@ -90,7 +90,8 @@ void Simulator::display()
    lander.draw(thrust, gout);
 
 
-   // Draw information last
+   // Draw information last;
+   gout.setPosition(Position(10, 10));
    gout << lander.getFuel();
 }
 
@@ -124,10 +125,10 @@ void callBack(const Interface* pUI, void* p)
    pSimulator->display();
 
    // Update lander acceleration 
-   Acceleration acceleration = pSimulator->lander.input(pSimulator->thrust, -1);
+   Acceleration acceleration = pSimulator->lander.input(pSimulator->thrust, -1); // -1 is suppose to be gravity?
 
    // Update lander position
-   pSimulator->lander.coast(acceleration, 1.0 / 30.0);
+   pSimulator->lander.coast(acceleration, .2); // Seems too slow now at 30fps?
 
    // Handle user input
    pSimulator->handleInput(pUI);
