@@ -65,7 +65,6 @@ Simulator::Simulator(const Position& posUpperRight)
 }
 
 
-
 /******************************
  * SIMULATOR DISPLAY
  * Places objects on the screen
@@ -134,10 +133,10 @@ void Simulator::handleInput(const Interface* pUI)
    }
 }
 
-/*************************************
+/****************************************************
  * SIMULATOR LOGIC HANDLER
  * Updates lander state, checks for landing/crashing
- **************************************/
+ ****************************************************/
 void updateSimulatorLogic(Simulator* pSimulator)
 {
    // Variables for landing logic.
@@ -150,12 +149,12 @@ void updateSimulatorLogic(Simulator* pSimulator)
       if (speed <= pSimulator->lander.getMaxSpeed())
       {
          pSimulator->lander.land();
-         cout << "SUCCESS" << endl;
+         //cout << "SUCCESS" << endl;
       }
       else
       {
          pSimulator->lander.crash();
-         cout << "Crashed on platform" << endl;
+         //cout << "Crashed on platform" << endl;
       }
    }
 
@@ -163,7 +162,7 @@ void updateSimulatorLogic(Simulator* pSimulator)
    else if (pSimulator->ground.hitGround(landerPos, pSimulator->lander.getWidth()))
    {
       pSimulator->lander.crash();
-      cout << "Lander hit the ground" << endl;
+      //cout << "Lander hit the ground" << endl;
    }
 
    // If the lander is still flying, update its state
