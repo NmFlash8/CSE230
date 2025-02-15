@@ -74,14 +74,14 @@ Acceleration Lander::input(const Thrust& thrust, double gravity)
       // rotate clockwise by adding 0.1 radians.
       if (thrust.isClock() && !thrust.isCounter())
       {
-         angle.add(0.1);
+         angle.add(0.0010);
          fuel -= 1.0;
       }
       // If the counterclockwise button is pressed,
       // rotate counterclockwise by subtracting 0.1 radians.
       else if (thrust.isCounter())
       {
-         angle.add(-0.1);
+         angle.add(-0.0010);
          fuel -= 1.0;
       }
 
