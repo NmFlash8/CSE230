@@ -1,7 +1,7 @@
 /**********************************************************************
  * LAB 06
  * Lunar Lander simulation. This is the Game class and main()
- * Created by Diego Estrada, and Noah McSheehy
+ * Created by Diego Estrada, and Noah McSheehy.
  **********************************************************************/
 
 #include "position.h"    // everything should have a point
@@ -11,14 +11,14 @@
 #include "uiDraw.h"      // for RANDOM and DRAW*
 #include "ground.h"      // for GROUND
 #include "test.h"        // for the unit tests
-#include "lander.h"      //
+#include "lander.h"      // for all the lander logic
 #include "star.h"        // Star class to handle twinkling
 #include <cmath>         // for SQRT
 #include <cassert>       // for ASSERT
 #include <vector>        // for storing multiple stars
 #include <cstdlib>       // for rand()
 #include <ctime>         // for seeding random numbers
-#include <iostream>
+#include <iostream>      // 
 using namespace std;
 
 
@@ -42,6 +42,7 @@ public:
 private:
    Angle a;
    std::vector<Star> stars; // Stores 50 Star objects
+   Position posUpperRight;
 };
 
 
@@ -49,14 +50,13 @@ private:
 Simulator::Simulator(const Position& posUpperRight)
    : ground(posUpperRight),
    lander(Position(posUpperRight.getX() / 2, 300)),
-   thrust()
+   thrust(),
+   posUpperRight(posUpperRight)  // Initialize posUpperRight here
 {
-   srand(static_cast<unsigned>(time(0))); // Seed the random number generator
-
    lander.reset(posUpperRight); // Reset the lander
 
-   // Generate 50 stars with random positions and phases using the Star class
-   for (int i = 0; i < 50; i++)
+   // Generate 100 stars with random positions and phases using the Star class
+   for (int i = 0; i < 100; i++)
    {
       Star star;
       star.reset(posUpperRight.getX(), posUpperRight.getY());
@@ -65,13 +65,14 @@ Simulator::Simulator(const Position& posUpperRight)
 }
 
 
+
 /******************************
  * SIMULATOR DISPLAY
  * Places objects on the screen
  ******************************/
 void Simulator::display()
 {
-   ogstream gout;
+   ogstream gout; // Graphics output
 
    // Draw all stars using the Star class's draw method
    for (size_t i = 0; i < stars.size(); i++)
@@ -85,14 +86,12 @@ void Simulator::display()
    // Draw lander using its own position
    lander.draw(thrust, gout);
 
-   // Draw information last
-
-   // isplay status message
+   // Display status message
    string statusText = "";
    gout.setPosition(Position(200, 300)); // set position to the top middle of the screen
-   if (lander.isFlying()) { statusText = "";      }
-   if (lander.isDead())   { statusText = "ouch!"; }
-   if (lander.isLanded()) { statusText = "Wow!!"; }
+   if (lander.isFlying()) { statusText = "";                      }
+   if (lander.isDead())   { statusText = "Crash landing!";        }
+   if (lander.isLanded()) { statusText = "Armstrong is awesome!"; }
    gout << statusText;
 
    // Display info panel in top left
@@ -116,6 +115,18 @@ void Simulator::handleInput(const Interface* pUI)
    // Update thrust states based on user input
    thrust.set(pUI);
 
+   // Reset the game when spacebar is pressed
+   if (pUI->isSpace())
+   {
+      lander.reset(posUpperRight);
+   }
+
+   // Quit the game when 'q' is pressed
+   if (pUI->isQ())
+   {
+      exit(0);
+   }
+
    // Update the twinkling phase of each star by calling its twinkle() method
    for (size_t i = 0; i < stars.size(); i++)
    {
@@ -123,14 +134,13 @@ void Simulator::handleInput(const Interface* pUI)
    }
 }
 
-
 /*************************************
  * SIMULATOR LOGIC HANDLER
  * Updates lander state, checks for landing/crashing
  **************************************/
 void updateSimulatorLogic(Simulator* pSimulator)
 {
-   // Variables needed to check if we are landing or not.
+   // Variables for landing logic.
    Position landerPos = pSimulator->lander.getPosition();
    double speed = pSimulator->lander.getSpeed();
 
@@ -148,6 +158,7 @@ void updateSimulatorLogic(Simulator* pSimulator)
          cout << "Crashed on platform" << endl;
       }
    }
+
    // Check if the lander hit the ground and handle crash
    else if (pSimulator->ground.hitGround(landerPos, pSimulator->lander.getWidth()))
    {

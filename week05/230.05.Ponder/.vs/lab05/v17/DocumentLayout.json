@@ -7,8 +7,16 @@
       "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:simulator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\velocity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:velocity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\ground.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:ground.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\uiInteract.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:uiInteract.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\ground.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -35,16 +43,8 @@
       "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:star.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\uiInteract.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:uiInteract.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\velocity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:velocity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\velocity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C4A2973A-F205-4BAD-81D9-D28F131C9DE4}|lab05.vcxproj|solutionrelative:velocity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,33 +58,33 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 3,
               "Title": "uiInteract.h",
               "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\uiInteract.h",
               "RelativeDocumentMoniker": "uiInteract.h",
               "ToolTip": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\uiInteract.h",
               "RelativeToolTip": "uiInteract.h",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAiwIgAAAALAAAAAAAAAA==",
+              "ViewState": "AgIAAGgAAAAAAAAAAADwv3MAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-02-15T21:51:11.996Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ground.cpp",
               "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\ground.cpp",
               "RelativeDocumentMoniker": "ground.cpp",
               "ToolTip": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\ground.cpp",
               "RelativeToolTip": "ground.cpp",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAHAAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAHAAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-15T21:41:15.512Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "ground.h",
               "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\ground.h",
               "RelativeDocumentMoniker": "ground.h",
@@ -92,12 +92,11 @@
               "RelativeToolTip": "ground.h",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-15T20:44:56.201Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-15T20:44:56.201Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "star.h",
               "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\star.h",
               "RelativeDocumentMoniker": "star.h",
@@ -105,12 +104,11 @@
               "RelativeToolTip": "star.h",
               "ViewState": "AgIAAA8AAAAAAAAAAADwvx4AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-15T20:09:07.057Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-15T20:09:07.057Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "velocity.cpp",
               "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\velocity.cpp",
               "RelativeDocumentMoniker": "velocity.cpp",
@@ -122,19 +120,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 1,
               "Title": "velocity.h",
               "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\velocity.h",
               "RelativeDocumentMoniker": "velocity.h",
               "ToolTip": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\velocity.h",
               "RelativeToolTip": "velocity.h",
-              "ViewState": "AgIAABsAAAAAAAAAAAAUwC0AAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAUwDAAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-14T03:10:05.092Z"
+              "WhenOpened": "2025-02-14T03:10:05.092Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "position.h",
               "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\position.h",
               "RelativeDocumentMoniker": "position.h",
@@ -142,12 +141,11 @@
               "RelativeToolTip": "position.h",
               "ViewState": "AgIAAAEAAAAAAAAAAAAUwCsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-14T03:08:15.96Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-14T03:08:15.96Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "position.cpp",
               "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\position.cpp",
               "RelativeDocumentMoniker": "position.cpp",
@@ -155,8 +153,7 @@
               "RelativeToolTip": "position.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-02-14T03:08:12.243Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-14T03:08:12.243Z"
             },
             {
               "$type": "Document",
@@ -166,14 +163,14 @@
               "RelativeDocumentMoniker": "simulator.cpp",
               "ToolTip": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\simulator.cpp",
               "RelativeToolTip": "simulator.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAGoAAAAAAAAAAADwv3cAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-08T22:40:02.862Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "lander.h",
               "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\lander.h",
               "RelativeDocumentMoniker": "lander.h",
@@ -181,12 +178,11 @@
               "RelativeToolTip": "lander.h",
               "ViewState": "AgIAAB4AAAAAAAAAAADwvysAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-15T20:46:39.599Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-15T20:46:39.599Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "lander.cpp",
               "DocumentMoniker": "C:\\Users\\nmcsh\\Documents\\GitHub\\CSE230\\week05\\230.05.Ponder\\lander.cpp",
               "RelativeDocumentMoniker": "lander.cpp",
@@ -194,8 +190,7 @@
               "RelativeToolTip": "lander.cpp",
               "ViewState": "AgIAABUAAAAAAAAAAAAAACAAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-02-07T03:08:46.069Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-07T03:08:46.069Z"
             }
           ]
         }
