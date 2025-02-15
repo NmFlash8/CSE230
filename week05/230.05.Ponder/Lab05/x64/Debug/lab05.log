@@ -1,2 +1,5 @@
-﻿  simulator.cpp
+﻿  lander.cpp
+  simulator.cpp
+  test.cpp
+  Generating Code...
   lab05.vcxproj -> C:\Users\nmcsh\Documents\GitHub\CSE230\week05\230.05.Ponder\x64\Debug\Lab05.exe

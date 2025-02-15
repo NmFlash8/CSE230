@@ -60,6 +60,16 @@ public:
    // we are dead. Draw the lander upside down
    void crash();
 
+   // Get status message
+   string getStatusText() const {
+      switch (status) {
+      case PLAYING: return "";
+      case SAFE:    return "Good job, you win!";
+      case DEAD:    return "You lose.";
+      default:      return "Unknown status.";
+      }
+   }
+
 private:
    Status   status;      // are we dead or not?
    Position pos;         // the location of the lander
